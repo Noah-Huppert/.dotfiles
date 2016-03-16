@@ -1,4 +1,4 @@
-	set nocompatible
+set nocompatible
 filetype off
 
 " -- Auto reload vimrc
@@ -100,7 +100,7 @@ map <C-d> :bnext<CR>
 
 " -- NERDTree
 command! NERD NERDTree
-command! NERDT NERDTreeToggle 
+command! NERDT NERDTreeToggle
 let NERDTreeShowHidden=1
 
 " -- Spellcheck
