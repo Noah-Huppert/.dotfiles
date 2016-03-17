@@ -42,6 +42,9 @@ Plugin 'fatih/vim-go'
 Plugin 'plasticboy/vim-markdown'
 let g:vim_markdown_folding_disabled = 1
 
+" -- Dockerfile lang
+Plugin 'ekalinin/Dockerfile.vim'
+
 " -- JSON
 Plugin 'elzr/vim-json'
 let g:vim_json_syntax_conceal = 0
