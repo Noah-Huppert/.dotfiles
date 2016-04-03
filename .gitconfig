@@ -7,3 +7,5 @@
 	c = commit -m
 	p = push
 	pu = pull
+[push]
+	default = simple
