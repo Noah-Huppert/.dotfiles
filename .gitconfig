@@ -1,0 +1,9 @@
+[user]
+	name = Noah Huppert
+	email = noahuppert@gmail.com
+[alias]
+	a = add .
+	s = status
+	c = commit -m
+	p = push
+	pu = pull
