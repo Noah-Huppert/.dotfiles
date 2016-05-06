@@ -1,110 +1,60 @@
 set nocompatible
 filetype off
 
-" -- Auto reload vimrc
+" .vimrc auto-reload
 augroup reload_vimrc " {
 	autocmd!
 	autocmd BufWritePost $MYVIMRC source $MYVIMRC
 augroup END " }
 
+" set vim shell to bash for Vundle
+set shell=~/.vim/shell-wrapper.sh
+
+" set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-" -- Plugin manager
 Plugin 'VundleVim/Vundle.vim'
-
-" -- Basic defaults
-Plugin 'git://github.com/tpope/vim-sensible.git'
-
-" -- File tree
-Plugin 'scrooloose/nerdtree'
-Plugin 'Xuyuanp/nerdtree-git-plugin'
-
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-
-let g:NERDTreeIndicatorMapCustom = {
-    \ "Modified"  : "✹",
-    \ "Staged"    : "✚",
-    \ "Untracked" : "✭",
-    \ "Renamed"   : "➜",
-    \ "Unmerged"  : "═",
-    \ "Deleted"   : "✖",
-    \ "Dirty"     : "~",
-    \ "Clean"     : "✔︎",
-    \ "Unknown"   : "?"
-    \ }
-
-" -- Golang
-Plugin 'fatih/vim-go'
-
-" -- Markdown
-Plugin 'plasticboy/vim-markdown'
-let g:vim_markdown_folding_disabled = 1
-
-" -- Dockerfile lang
-Plugin 'ekalinin/Dockerfile.vim'
-
-" -- JSON
-Plugin 'elzr/vim-json'
-let g:vim_json_syntax_conceal = 0
-
-" -- Buffer explorer
-Plugin 'bling/vim-bufferline'
-
-" -- Base-16 theme
-Plugin 'chriskempson/base16-vim'
-"let base16colorspace=256
-"Plugin 'candycode.vim'
-
-" -- Status line
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-
-" -- Git integration
-" Plugin 'git://github.com/tpope/vim-fugitive.git'
-
-" -- Buffer kill
+Plugin 'altercation/vim-colors-solarized'
 Plugin 'qpkorr/vim-bufkill'
-
-" -- Code completion
-" Plugin 'git://github.com/Valloric/YouCompleteMe'
-
-" -- Indentation
-Plugin 'godlygeek/tabular'
-
-" -- Color highlighting
-Plugin 'git://github.com/ap/vim-css-color.git'
+Plugin 'bling/vim-bufferline'
+Plugin 'rust-lang/rust.vim'
+Plugin 'dag/vim-fish'
+Plugin 'Townk/vim-autoclose'
 
 call vundle#end()
-filetype plugin indent on
-
-" Line numbers
-set number
-set hidden
 
 " Theme
-colorscheme base16-paraiso
-"set background=dark
-let g:airline_theme='simple'
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#bufferline#enabled = 0
+syntax enable
+set background=light
+set number
+colorscheme solarized
+"let g:solarized_termcolors=256
 
-" Keymaps
-" -- Window navigation
+" General config
+set spell
+
+" Behavior config
+let g:netrw_preview = 1
+let g:netrw_liststyle=3
+let g:netrw_bufsettings = 'noma nomod nu nobl nowrap ro' " Always show line numbers, useful for netrw buffer navigation
+"let g:netrw_chgwin=2
+augroup Format-Options
+	autocmd!
+	autocmd BufEnter * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+
+augroup END
+
+" -- Key mapping
+" -- -- Window navigation
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
-" -- Buffer navigation
+" -- -- Buffer navigation
 map <C-a> :bprevious<CR>
 map <C-d> :bnext<CR>
+map <C-c> :BD<cr>
 
-" -- NERDTree
-command! NERD NERDTree
-command! NERDT NERDTreeToggle
-let NERDTreeShowHidden=1
-
-" -- Spellcheck
-setlocal spell! spelllang=en_us
+filetype plugin indent on
