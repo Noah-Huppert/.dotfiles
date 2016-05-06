@@ -14,6 +14,9 @@ set shell=~/.vim/shell-wrapper.sh
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
+" Vundle install instructions
+" git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'qpkorr/vim-bufkill'
