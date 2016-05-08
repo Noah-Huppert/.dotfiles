@@ -31,7 +31,7 @@ Plugin 'dag/vim-fish'
 " -- Language
 Plugin 'sheerun/vim-polyglot'
 Plugin 'rust-lang/rust.vim'
-Plugin 'sheerun/vim-polyglot'
+Plugin 'tikhomirov/vim-glsl'
 
 call vundle#end()
 
