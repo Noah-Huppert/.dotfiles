@@ -18,12 +18,20 @@ call vundle#begin()
 " git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 Plugin 'VundleVim/Vundle.vim'
+
+" -- Style
 Plugin 'altercation/vim-colors-solarized'
+
+" -- Behavior
 Plugin 'qpkorr/vim-bufkill'
 Plugin 'bling/vim-bufferline'
-Plugin 'rust-lang/rust.vim'
-Plugin 'dag/vim-fish'
 Plugin 'Townk/vim-autoclose'
+Plugin 'dag/vim-fish'
+
+" -- Language
+Plugin 'sheerun/vim-polyglot'
+Plugin 'rust-lang/rust.vim'
+Plugin 'sheerun/vim-polyglot'
 
 call vundle#end()
 
