@@ -1,0 +1,4 @@
+export DOTRC_GO=true
+export DOTRC_GOPATH=""
+
+export DOTRC_NVM=true
