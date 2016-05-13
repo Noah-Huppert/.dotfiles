@@ -1,5 +1,5 @@
 # .dotfiles
-A collection of my dotfiles
+A collection of system configuration files
 
 # Setup
 1. Fish
