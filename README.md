@@ -17,7 +17,6 @@ A collection of system configuration files
 6. `.dotrc`
 	- `dotrc-edit`
 		- This command will only work if you reloaded your shell after you cloned down this repository
-		- This is a result of the `dotrc-edit` function being declared in the Fish shell init file
 
-# `.dotrc
+# `.dotrc`
 The purpose of this file is to store configuration values which may differ between computers.
