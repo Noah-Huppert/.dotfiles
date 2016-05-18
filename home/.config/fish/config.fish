@@ -66,3 +66,6 @@ end
 if eval $DOTRC_GO = true
 	export GOPATH=$DOTRC_GOPATH
 end
+
+# Misc
+export PATH=$PATH:$DOTRC_PATH
