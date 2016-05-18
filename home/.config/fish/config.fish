@@ -35,6 +35,10 @@ function fish-edit
 	eval $EDITOR "$HOME/.config/fish/config.fish"
 end
 
+function wrk
+	cd ~/Documents/workspace
+end
+
 # External config
 # ---- theme-default
 set -g theme_short_path yes # Only show current folder name in path
