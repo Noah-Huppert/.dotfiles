@@ -39,6 +39,11 @@ function wrk
 	cd ~/Documents/workspace
 end
 
+function mcdir 
+	mkdir $argv
+	cd $argv
+end
+
 # External config
 # ---- theme-default
 set -g theme_short_path yes # Only show current folder name in path
