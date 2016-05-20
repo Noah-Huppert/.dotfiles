@@ -68,4 +68,6 @@ if eval $DOTRC_GO = true
 end
 
 # Misc
-export PATH=$PATH:$DOTRC_PATH
+if test -n "$DOTRC_PATH"
+	export PATH="$PATH $DOTRC_PATH"
+end

@@ -27,6 +27,7 @@ Plugin 'qpkorr/vim-bufkill'
 Plugin 'bling/vim-bufferline'
 Plugin 'Townk/vim-autoclose'
 Plugin 'dag/vim-fish'
+runtime macros/matchit.vi
 
 " -- Language
 Plugin 'sheerun/vim-polyglot'
@@ -69,3 +70,4 @@ map <C-d> :bnext<CR>
 map <C-c> :BD<cr>
 
 filetype plugin indent on
+filetype plugin on
