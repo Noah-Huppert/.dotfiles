@@ -27,7 +27,8 @@ Plugin 'qpkorr/vim-bufkill'
 Plugin 'bling/vim-bufferline'
 Plugin 'Townk/vim-autoclose'
 Plugin 'dag/vim-fish'
-runtime macros/matchit.vi
+source $VIMRUNTIME/macros/matchit.vim
+packadd! matchit
 
 " -- Language
 Plugin 'sheerun/vim-polyglot'
@@ -58,6 +59,27 @@ augroup Format-Options
 augroup END
 
 " -- Key mapping
+" -- -- Disable certain keys
+" -- -- -- Arrow keys
+noremap <Up> <NOP>
+noremap <Down> <NOP>
+noremap <Left> <NOP>
+noremap <Right> <NOP>
+
+" -- -- -- Scroll wheel
+noremap <ScrollWheelUp>      <NOP>
+noremap <S-ScrollWheelUp>    <NOP>
+noremap <C-ScrollWheelUp>    <NOP>
+noremap <ScrollWheelDown>    <NOP>
+noremap <S-ScrollWheelDown>  <NOP>
+noremap <C-ScrollWheelDown>  <NOP>
+noremap <ScrollWheelLeft>    <NOP>
+noremap <S-ScrollWheelLeft>  <NOP>
+noremap <C-ScrollWheelLeft>  <NOP>
+noremap <ScrollWheelRight>   <NOP>
+noremap <S-ScrollWheelRight> <NOP>
+noremap <C-ScrollWheelRight> <NOP>
+
 " -- -- Window navigation
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
@@ -70,4 +92,4 @@ map <C-d> :bnext<CR>
 map <C-c> :BD<cr>
 
 filetype plugin indent on
-filetype plugin on
+:filetype plugin on
