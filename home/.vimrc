@@ -59,6 +59,10 @@ augroup Format-Options
 augroup END
 
 " -- Key mapping
+" -- -- Move by visual lines (Instead of file lines)
+noremap k gk
+noremap j gj
+
 " -- -- Disable certain keys
 " -- -- -- Arrow keys
 noremap <Up> <NOP>
