@@ -3,8 +3,7 @@ export PATH="/home/noah/.nvm/versions/node/v6.0.0/bin:/usr/local/sbin:/usr/local
 
 # Config
 # -- -- zsh
-ZSH_THEME="sorin"
-plugins=(git)
+$ZSHCONF_QUIET source ~/.config/zshconf/zshconf.zsh
 
 # -- -- Homeshick
 source "$HOME/.homesick/repos/homeshick/homeshick.sh"

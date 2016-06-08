@@ -1,0 +1,8 @@
+# oh my zsh
+https://github.com/robbyrussell/oh-my-zsh.git
+	# lib
+	lib/git.zsh
+	lib/clipboard.zsh
+	# Theme
+	lib/theme-and-appearance.zsh
+	themes/sorin.zsh-theme	
