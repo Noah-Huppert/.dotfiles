@@ -3,7 +3,7 @@ export PATH="/home/noah/.nvm/versions/node/v6.0.0/bin:/usr/local/sbin:/usr/local
 
 # Config
 # -- -- zsh
-$ZSHCONF_QUIET source ~/.config/zshconf/zshconf.zsh
+{ source ~/.config/zshconf/zshconf.zsh } &> /dev/null
 
 # -- -- Homeshick
 source "$HOME/.homesick/repos/homeshick/homeshick.sh"
