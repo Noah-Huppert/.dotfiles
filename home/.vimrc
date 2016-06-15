@@ -8,7 +8,7 @@ augroup reload_vimrc " {
 augroup END " }
 
 " set vim shell to bash for Vundle
-set shell=~/.vim/shell-wrapper.sh
+" set shell=~/.vim/shell-wrapper.sh
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim

@@ -28,8 +28,8 @@ else
 	exit 1
 fi
 
-if [[ -z $DOTRC_PATH ]]; then
-	export PATH="$PATH $DOTRC_PATH"
+if [[ -n $DOTRC_PATH ]]; then
+	export PATH="$PATH:$DOTRC_PATH"
 fi
 
 # -- -- Alias
@@ -42,7 +42,7 @@ function zsh-edit() {
 }
 
 function wrk() {
-	cd ~/Documents/workspace
+	cd ~/Documents/workspace/$1
 }
 
 function mcdir() { # (dir)
