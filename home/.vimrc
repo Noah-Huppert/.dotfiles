@@ -46,6 +46,7 @@ colorscheme solarized
 
 " General config
 set spell
+set colorcolumn=80
 
 " Behavior config
 let g:netrw_preview = 1
