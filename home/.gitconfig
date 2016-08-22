@@ -8,6 +8,7 @@
 	dc = diff --cached
 	c = commit -m
 	p = push
+	po = push origin
 	pom = push origin master
 	pu = pull
 [push]
