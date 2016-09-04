@@ -1,5 +1,52 @@
-mcdir() { # (dir)
-	mkdir -p $1
+# Environment
+export PATH="/home/noah/.nvm/versions/node/v6.0.0/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin"
+
+# Config
+# -- -- zsh
+{ source ~/.config/zshconf/zshconf.zsh } &> /dev/null
+
+# -- -- Environment
+export EDITOR=vim
+
+# -- -- .dotrc
+export DOTFILES_REPO_DIR="$HOME/.homesick/repos/.dotfiles"
+export DOTRC_FILE="$DOTFILES_REPO_DIR/.dotrc"
+
+function dotrc-edit() {
+	if [[ ! -f $DOTRC_FILE ]]; then
+		mv "$DOTFILES_REPO_DIR/.dotrc.example $DOTRC_FILE"
+	fi
+
+	$EDITOR $DOTRC_FILE
+}
+
+if [[ -f $DOTRC_FILE ]]; then
+	source $DOTRC_FILE
+else
+	llog $LOG_ERROR ".dotrc file not found, run `dotrc-edit` (expected: $DOTRC_FILE)"
+	llog $LOG_ERROR ".zshrc will not load"
+	exit 1
+fi
+
+if [[ -n $DOTRC_PATH ]]; then
+	export PATH="$PATH:$DOTRC_PATH"
+fi
+
+# -- -- Alias
+function zsh-reload() {
+	source ~/.zshrc
+}
+
+function zsh-edit() {
+	$EDITOR ~/.zshrc
+}
+
+function wrk() {
+	cd ~/Documents/workspace/$1
+}
+
+function mcdir() { # (dir)
+	mkdir $1
 	cd $1
 }
 
