@@ -26,6 +26,16 @@ font pango:Roboto 10
 # X core fonts rendering does not support right-to-left and this being a bitmap
 # font, it doesn’t scale on retina/hidpi displays.
 
+# i3 Gaps
+gaps inner 15
+gaps outer 15
+for_window [class="^.*"] border pixel 0
+
+# Volume control
+bindsym XF86AudioRaiseVolume exec amixer -q set Master 2dB+ unmute
+bindsym XF86AudioLowerVolume exec amixer -q set Master 2dB- unmute
+bindsym XF86AudioMute exec amixer -q set Master toggle
+
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
@@ -124,6 +134,7 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 #bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 bindsym $mod+Shift+e exit
+bindsym $mod+Control+l exec i3lock -i /usr/share/pixmaps/cliffs.png
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -156,4 +167,15 @@ bindsym $mod+r mode "resize"
 bar {
         status_command i3status --config $HOME/.config/i3/i3status.conf
 	position top
+	font pango:Roboto 11
+
 }
+
+# Focused colors
+#class                     border  bg      text    indicator child_border
+#client.focused             #F4A259 #F4E285 #000000 #BC4B51   #8CB369
+#client.focused_interactive #F4A259 #F4E285 #000000 #BC4B51   #8CB369
+#client.unfocused           #F4A259 #F4E285 #000000 #BC4B51   #8CB369
+#client.urgent              #F4A259 #F4E285 #000000 #BC4B51   #8CB369
+#client.placeholder         #F4A259 #F4E285 #000000 #BC4B51   #8CB369
+#client.background          #F4A259 #F4E285 #000000 #BC4B51   #8CB369

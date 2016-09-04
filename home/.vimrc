@@ -20,15 +20,13 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 " -- Style
-Plugin 'altercation/vim-colors-solarized'
+" Plugin 'altercation/vim-colors-solarized'
+Plugin 'whatyouhide/vim-gotham'
 
 " -- Behavior
 Plugin 'qpkorr/vim-bufkill'
 Plugin 'bling/vim-bufferline'
 Plugin 'Townk/vim-autoclose'
-Plugin 'dag/vim-fish'
-source $VIMRUNTIME/macros/matchit.vim
-packadd! matchit
 
 " -- Language
 Plugin 'sheerun/vim-polyglot'
@@ -39,9 +37,9 @@ call vundle#end()
 
 " Theme
 syntax enable
-set background=light
+"set background=light
 set number
-colorscheme solarized
+colorscheme gotham
 "let g:solarized_termcolors=256
 
 " General config
