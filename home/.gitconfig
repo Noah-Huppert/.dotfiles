@@ -1,12 +1,13 @@
 [user]
 	name = Noah Huppert
 	email = noahhuppert@gmail.com
+	signingkey = 60D7A7A74BF54373C9EE17C92362933B0B32EC32
 [alias]
 	a = add .
 	s = status
 	d = diff
 	dc = diff --cached
-	c = commit -m
+	c = commit -S -m
 	p = push
 	po = push origin
 	pom = push origin master
