@@ -1,6 +1,3 @@
-# Environment
-export PATH="/home/noah/.nvm/versions/node/v6.0.0/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin"
-
 # Config
 # -- -- zsh
 { source ~/.config/zshconf/zshconf.zsh } &> /dev/null
@@ -9,21 +6,42 @@ export PATH="/home/noah/.nvm/versions/node/v6.0.0/bin:/usr/local/sbin:/usr/local
 export EDITOR=vim
 
 # -- -- .dotrc
-export DOTFILES_REPO_DIR="$HOME/.homesick/repos/.dotfiles"
-export DOTRC_FILE="$DOTFILES_REPO_DIR/.dotrc"
+export DOTRC_DIR="$HOME/.config/dotrc"
+export DOTRC_FILE="$DOTRC_DIR/config"
 
 function dotrc-edit() {
 	if [[ ! -f $DOTRC_FILE ]]; then
-		mv "$DOTFILES_REPO_DIR/.dotrc.example $DOTRC_FILE"
+		cp "$DOTRC_FILE.example" $DOTRC_FILE
 	fi
 
 	$EDITOR $DOTRC_FILE
 }
 
+function dotrc-machine-edit() {
+	[ -z "$1" ] && echo "Expected 1 argument"
+
+	$EDITOR "$DOTRC_DIR/machines/$1"
+}
+
+# -- -- -- load
 if [[ -f $DOTRC_FILE ]]; then
 	source $DOTRC_FILE
+
+	export DOTRC_MACHINE_FILE="$DOTRC_DIR/machines/$DOTRC_MACHINE"
+
+	# load machine specific config
+	if [ ! -z ${DOTRC_MACHINE+x} ]; then
+		if [ -f $DOTRC_MACHINE_FILE ]; then
+			source $DOTRC_MACHINE_FILE
+		else
+			llog $LOG_ERROR "cannot load machine specific config (expected: $DOTRC_MACHINE_FILE)"
+			llog $LOG_ERROR "ignoring..."
+
+		fi
+	fi
+		
 else
-	llog $LOG_ERROR ".dotrc file not found, run `dotrc-edit` (expected: $DOTRC_FILE)"
+	llog $LOG_ERROR "dotrc file not found, run `dotrc-edit` (expected: $DOTRC_FILE)"
 	llog $LOG_ERROR ".zshrc will not load"
 	exit 1
 fi
@@ -57,7 +75,12 @@ homeshick refresh --quiet
 
 # -- -- NVM
 if [[ $DOTRC_NVM == true ]]; then
-	export NVM_DIR="$HOME/.nvm"
+	if [ -z ${DOTRC_NVM_DIR+x} ]; then
+		export NVM_DIR="$HOME/.nvm"
+	else
+		export NVM_DIR=$DOTRC_NVM_DIR
+	fi
+
 	[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 fi
 

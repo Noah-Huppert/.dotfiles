@@ -1,0 +1,13 @@
+# Restart wifi
+function wifi() {
+	sudo netctl restart wlp58s0-dragonfly3
+}
+
+# Control backlight, $1 should be the desired backlight percent
+function backlight() {
+	[ -z "$1" ] && echo "Expected 1 argument"
+
+	brightness = $1 / $(cat /sys/class/backlight/intel_backlight/max_brightness)
+	sudo tee /sys/class/backlight/intel_backlight/brightness <<< brightness
+}
+

@@ -1,0 +1,27 @@
+#!/bin/bash
+# Go
+# -- Set to true/false based on whether Go is install
+export DOTRC_GO=false
+
+# -- Go path
+export DOTRC_GOPATH=""
+
+# NVM
+# -- Set to true/false based on whether NVM is installed
+export DOTRC_NVM=true
+
+# -- Location of NVM
+export DOTRC_NVM_DIR=""
+
+# Custom path for machine, appened onto $PATH
+export DOTRC_PATH=""
+
+# Specifies a dotrc machine preset to load
+#
+# This can be useful if you end up writing a whole bunch of helper
+# functions for a machine (start wifi, control screen brightness, ect) 
+# and you wish to save them in a repository
+#	
+# dotrc preset names are actually just the name of the file you put the code in.
+# Files are stored in $HOME/.config/dotrc/machines/
+export DOTRC_MACHINE=""
