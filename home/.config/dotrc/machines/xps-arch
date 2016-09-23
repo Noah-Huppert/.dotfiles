@@ -5,9 +5,10 @@ function wifi() {
 
 # Control backlight, $1 should be the desired backlight percent
 function backlight() {
-	[ -z "$1" ] && echo "Expected 1 argument"
+	[ -z "$1" ] && echo "Expected 1 argument" && return
 
-	brightness = $1 / $(cat /sys/class/backlight/intel_backlight/max_brightness)
-	sudo tee /sys/class/backlight/intel_backlight/brightness <<< brightness
+	local brightness=$(awk -v mod="$1" -v max="$(cat /sys/class/backlight/intel_backlight/max_brightness)" 'BEGIN{printf "%.0f", (mod/100)*max}')
+
+	sudo tee /sys/class/backlight/intel_backlight/brightness <<< $brightness
 }
 
