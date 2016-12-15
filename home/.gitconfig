@@ -12,5 +12,6 @@
 	po = push origin
 	pom = push origin master
 	pu = pull
+	pul = pull origin master
 [push]
 	default = simple
