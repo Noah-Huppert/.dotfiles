@@ -13,6 +13,10 @@ export DOTRC_NVM=true
 # -- Location of NVM
 export DOTRC_NVM_DIR=""
 
+# RVM
+# -- Set to true/false based on whether RVM is installed
+export DOTRC_RVM=false
+
 # Custom path for machine, appened onto $PATH
 export DOTRC_PATH=""
 

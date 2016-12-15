@@ -68,6 +68,10 @@ function mcdir() { # (dir)
 	cd $1
 }
 
+function serve() {
+	python3 -m http.server
+}
+
 # -- -- Homeshick
 source "$HOME/.homesick/repos/homeshick/homeshick.sh"
 fpath=($HOME/.homesick/repos/homeshick/completions $fpath)
@@ -87,4 +91,13 @@ fi
 # -- -- Go
 if [[ $DOTRC_GO == true ]]; then
 	export GOPATH=$DOTRC_GOPATH
+	export PATH="$PATH:$GOPATH/bin"
 fi
+
+# -- -- RVM
+if [[ $DOTRC_RVM == true ]]; then
+	export PATH="$PATH:$HOME/.rvm/bin"
+	[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+fi
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
