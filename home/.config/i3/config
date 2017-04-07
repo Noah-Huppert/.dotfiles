@@ -27,9 +27,9 @@ font pango:Roboto 10
 # font, it doesn’t scale on retina/hidpi displays.
 
 # i3 Gaps
-gaps inner 15
-gaps outer 15
-for_window [class="^.*"] border pixel 0
+#gaps inner 15
+#gaps outer 15
+#for_window [class="^.*"] border pixel 0
 
 # Volume control
 bindsym XF86AudioRaiseVolume exec amixer -q set Master 2dB+ unmute
@@ -179,3 +179,10 @@ bar {
 #client.urgent              #F4A259 #F4E285 #000000 #BC4B51   #8CB369
 #client.placeholder         #F4A259 #F4E285 #000000 #BC4B51   #8CB369
 #client.background          #F4A259 #F4E285 #000000 #BC4B51   #8CB369
+
+# Scratchpad
+# Make the currently focused window a scratchpad
+bindsym $mod+Shift+minus move scratchpad
+
+# Show the first scratchpad window
+bindsym $mod+minus scratchpad show
