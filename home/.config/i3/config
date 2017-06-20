@@ -30,6 +30,8 @@ font pango:Roboto 10
 #gaps inner 15
 #gaps outer 15
 #for_window [class="^.*"] border pixel 0
+# browser pop-ups
+for_window [window_role="pop-up"] floating enable
 
 # Volume control
 bindsym XF86AudioRaiseVolume exec amixer -q set Master 2dB+ unmute

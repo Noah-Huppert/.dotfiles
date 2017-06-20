@@ -15,5 +15,8 @@ function backlight() {
 # APK Tool
 export PATH="$PATH:$HOME/Documents/bin/apktool"
 
+# Stockfish
+export PATH="$PATH:$HOME/Documents/bin/stockfish"
+
 # Python local bin
 export PATH="$PATH:$HOME/.local/bin"

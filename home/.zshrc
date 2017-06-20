@@ -72,6 +72,18 @@ function serve() {
 	python3 -m http.server
 }
 
+function venvdir() {# virtual_env
+	echo "$HOME/Documents/lib/python/$1"
+}
+
+function venv() {# virtual_env
+	virtualenv "$(venvdir $1)"
+}
+
+function venvactivate() {# virtual_env
+	source "$(venvdir $1)/bin/activate"
+}
+
 # -- -- Homeshick
 source "$HOME/.homesick/repos/homeshick/homeshick.sh"
 fpath=($HOME/.homesick/repos/homeshick/completions $fpath)
@@ -99,5 +111,9 @@ if [[ $DOTRC_RVM == true ]]; then
 	export PATH="$PATH:$HOME/.rvm/bin"
 	[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 fi
+
+# Enable Vim mode in zsh
+bindkey -v
+export KEYTIMEOUT=1
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting

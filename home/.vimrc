@@ -33,6 +33,8 @@ Plugin 'sheerun/vim-polyglot'
 Plugin 'rust-lang/rust.vim'
 Plugin 'tikhomirov/vim-glsl'
 
+Plugin 'editorconfig/editorconfig-vim'
+
 call vundle#end()
 
 " Theme
@@ -47,7 +49,7 @@ set spell
 set colorcolumn=80
 
 " Behavior config
-let g:netrw_preview = 1
+let g:netrw_preview = 2
 let g:netrw_liststyle=3
 let g:netrw_bufsettings = 'noma nomod nu nobl nowrap ro' " Always show line numbers, useful for netrw buffer navigation
 "let g:netrw_chgwin=2
