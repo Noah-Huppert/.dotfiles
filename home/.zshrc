@@ -5,6 +5,18 @@
 # -- -- Environment
 export EDITOR=vim
 
+# Config dir
+export XDG_CONFIG_HOME="$HOME/.config"
+
+# SSH Agent
+# Snippet from wiki.archlinux.org/inudex.php/SSH_keys#SSH_agents
+if ! pgrep -u "$USER" ssh-agent > /dev/null; then
+	ssh-agent > ~/.config/running-ssh-agent-info
+fi
+if [[ "$SSH_AGENT_PID" == "" ]]; then
+	eval "$(<~/.config/running-ssh-agent-info)" > /dev/null
+fi
+
 # -- -- .dotrc
 export DOTRC_DIR="$HOME/.config/dotrc"
 export DOTRC_FILE="$DOTRC_DIR/config"

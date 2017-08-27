@@ -1,6 +1,6 @@
 #!/bin/bash
 # Go
-# -- Set to true/false based on whether Go is install
+# -- Set to true/false based on whether Go is installed
 export DOTRC_GO=false
 
 # -- Go path
