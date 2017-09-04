@@ -3,7 +3,7 @@
 { source ~/Documents/bin/zshconf/zshconf.zsh } &> /dev/null
 
 # -- -- Environment
-export EDITOR=vim
+export EDITOR=nvim
 
 # Config dir
 export XDG_CONFIG_HOME="$HOME/.config"
