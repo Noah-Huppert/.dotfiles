@@ -1,6 +1,6 @@
 # Config
 # -- -- zsh
-{ source ~/.config/zshconf/zshconf.zsh } &> /dev/null
+{ source ~/Documents/bin/zshconf/zshconf.zsh } &> /dev/null
 
 # -- -- Environment
 export EDITOR=vim
