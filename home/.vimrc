@@ -1,3 +1,4 @@
+" Required vim options for Vundle
 set nocompatible
 filetype off
 
@@ -21,7 +22,8 @@ Plugin 'VundleVim/Vundle.vim'
 
 " -- Style
 " Plugin 'altercation/vim-colors-solarized'
-Plugin 'whatyouhide/vim-gotham'
+" Plugin 'whatyouhide/vim-gotham'
+Plugin 'morhetz/gruvbox'
 
 " -- Behavior
 Plugin 'qpkorr/vim-bufkill'
@@ -41,7 +43,7 @@ call vundle#end()
 syntax enable
 "set background=light
 set number
-colorscheme gotham
+colorscheme gruvbox
 "let g:solarized_termcolors=256
 
 " General config
