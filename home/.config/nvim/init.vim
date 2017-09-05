@@ -41,7 +41,7 @@ call vundle#end()
 
 " Theme
 syntax enable
-"set background=light
+set background=dark
 set number
 colorscheme gruvbox
 "let g:solarized_termcolors=256
