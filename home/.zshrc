@@ -5,6 +5,9 @@
 # -- -- Environment
 export EDITOR=nvim
 
+# -- -- GPG TTY
+export GPG_TTY=$(tty)
+
 # Config dir
 export XDG_CONFIG_HOME="$HOME/.config"
 

@@ -15,11 +15,3 @@
 	pul = pull origin master
 [push]
 	default = simple
-#/home/noah/.gnupg/pubring.kbx
-#-----------------------------
-#pub   ed25519 2017-08-27 [SC] [expires: 2018-08-27]
-#      0F3195D1242550D23B602E45FDE646A64CA10626
-#uid           [ultimate] Noah Huppert (Secondary) <developer.noah@gmail.com>
-#uid           [ultimate] Noah Huppert (Primary, Secure) <noahhuppert@protonmail.com>
-#sub   cv25519 2017-08-27 [E] [expires: 2018-08-27]
-
