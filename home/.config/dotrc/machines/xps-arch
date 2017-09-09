@@ -20,3 +20,6 @@ export PATH="$PATH:$HOME/Documents/bin/stockfish"
 
 # Python local bin
 export PATH="$PATH:$HOME/.local/bin"
+
+# Google Cloud Bin
+export PATH="$PATH:/opt/google-cloud-sdk/bin"

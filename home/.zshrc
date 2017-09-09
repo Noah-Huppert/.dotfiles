@@ -13,11 +13,13 @@ export XDG_CONFIG_HOME="$HOME/.config"
 
 # SSH Agent
 # Snippet from wiki.archlinux.org/inudex.php/SSH_keys#SSH_agents
+export RC_SSH_AGENT_INFO="$HOME/.config/running-ssh-agent-info"
+
 if ! pgrep -u "$USER" ssh-agent > /dev/null; then
-	ssh-agent > ~/.config/running-ssh-agent-info
+	ssh-agent > $RC_SSH_AGENT_INFO
 fi
 if [[ "$SSH_AGENT_PID" == "" ]]; then
-	eval "$(<~/.config/running-ssh-agent-info)" > /dev/null
+	eval "$(<$RC_SSH_AGENT_INFO)" > /dev/null
 fi
 
 # -- -- .dotrc

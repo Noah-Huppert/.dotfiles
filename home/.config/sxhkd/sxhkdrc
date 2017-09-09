@@ -119,3 +119,23 @@ super + alt + shift + {h,j,k,l}
 # move a floating window
 super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
+
+
+XF86AudioMute
+	pulseaudio-ctl mute
+#/usr/bin/pulseaudio-ctl mute-input  ==>  Toggle status of mute for mic
+
+# volume up
+XF86AudioRaiseVolume
+	pulseaudio-ctl up
+
+shift + XF86AudioRaiseVolume
+	pulseaudio-ctl up 25
+
+# volume down
+XF86AudioLowerVolume
+	pulseaudio-ctl down
+
+shift + XF86MediaLowerVolume
+	pulseaudio-ctl down 50
+
