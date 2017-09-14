@@ -101,6 +101,11 @@ function venvactivate() {# virtual_env
 	source "$(venvdir $1)/bin/activate"
 }
 
+# -- -- Url decode and encode
+alias urldecode="python2 -c \"import sys, urllib as ul; [sys.stdout.write(ul.unquote_plus(l)) for l in sys.stdin]\""
+
+alias urlencode="python2 -c \"import sys, urllib as ul; [sys.stdout.write(ul.quote_plus(l)) for l in sys.stdin]\""
+
 # -- -- Homeshick
 source "$HOME/.homesick/repos/homeshick/homeshick.sh"
 fpath=($HOME/.homesick/repos/homeshick/completions $fpath)
