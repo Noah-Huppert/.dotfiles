@@ -139,3 +139,9 @@ XF86AudioLowerVolume
 shift + XF86MediaLowerVolume
 	pulseaudio-ctl down 50
 
+# 
+# Lock
+#
+ctrl + alt + l
+	i3lock #-i /usr/share/pixmaps/nyc-bkgrnd.png
+
