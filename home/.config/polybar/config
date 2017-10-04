@@ -15,6 +15,7 @@ alert = #bd2c40
 [bar/primary]
 width = 100%
 height = 27
+monitor = ${env:MONITOR}
 
 background = ${colors.background}
 foreground = ${colors.foreground}
@@ -26,7 +27,7 @@ module-margin = 2
 font-0 = fixed:pixelsize=10;1
 font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = siji:pixelsize=10;1
-font-3 = "Font Awesome;size=14;antialias=true;3"
+font-3 = FontAwesome:size=14:antialias=true;3
 
 # Map scrollwheel to bspwm workspace change
 scroll-up = bspwm-desknext
@@ -183,7 +184,7 @@ label = %date% %time%
 type = internal/volume
 
 format-volume = <label-volume> <bar-volume>
-label-volume = VOL
+label-volume = 
 label-volume-foreground = ${root.foreground}
 
 format-muted-prefix = " "
