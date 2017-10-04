@@ -143,5 +143,5 @@ shift + XF86MediaLowerVolume
 # Lock
 #
 ctrl + alt + l
-	i3lock #-i /usr/share/pixmaps/nyc-bkgrnd.png
+	i3lock -i /usr/share/pixmaps/rocks.png
 
