@@ -35,6 +35,10 @@ Plugin 'sheerun/vim-polyglot'
 Plugin 'rust-lang/rust.vim'
 Plugin 'tikhomirov/vim-glsl'
 
+" -- -- Go
+Plugin 'fatih/vim-go'
+
+
 Plugin 'editorconfig/editorconfig-vim'
 
 call vundle#end()
