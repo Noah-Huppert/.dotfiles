@@ -4,7 +4,7 @@ function wifi() {
 }
 
 # Control backlight, $1 should be the desired backlight percent
-function backlight() {
+function b() {
 	[ -z "$1" ] && echo "Expected 1 argument" && return
 
 	local brightness=$(awk -v mod="$1" -v max="$(cat /sys/class/backlight/intel_backlight/max_brightness)" 'BEGIN{printf "%.0f", (mod/100)*max}')
@@ -15,7 +15,8 @@ function backlight() {
 # Restart polybar
 function polystart() {
 	# Run polybar launch script with nohup, redirect output to null
-	cd $HOME && nohup $HOME/.config/polybar/launch.sh > /dev/null
+	echo "Restarting Polybar"
+	$(cd ~ && nohup $HOME/.config/polybar/launch.sh > /dev/null)
 }
 
 # APK Tool
