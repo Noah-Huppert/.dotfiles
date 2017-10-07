@@ -191,7 +191,7 @@ label-volume = 
 label-volume-foreground = ${root.foreground}
 
 format-muted-prefix = " "
-format-muted-foreground = ${colors.foreground-alt}
+format-muted-foreground = ${colors.foreground}
 label-muted =   
 
 bar-volume-width = 10
@@ -232,7 +232,7 @@ ramp-capacity-1 = 
 ramp-capacity-2 = 
 ramp-capacity-3 = 
 ramp-capacity-4 = 
-ramp-capacity-foreground = ${colors.foreground-alt}
+ramp-capacity-foreground = ${colors.foreground}
 
 #animation-charging-3 = 
 #animation-charging-4 = 
@@ -241,7 +241,7 @@ animation-charging-1 = 
 animation-charging-2 = 
 animation-charging-3 = 
 animation-charging-4 = 
-animation-charging-foreground = ${colors.foreground-alt}
+animation-charging-foreground = ${colors.foreground}
 animation-charging-framerate = 750
 
 [module/powermenu]
@@ -251,9 +251,9 @@ expand-right = true
 
 format-spacing = 1
 
-label-open = 
+label-open = "    "
 label-open-foreground = ${colors.secondary}
-label-close =  cancel
+label-close =  cancel
 label-close-foreground = ${colors.secondary}
 label-separator = |
 label-separator-foreground = ${colors.foreground-alt}
