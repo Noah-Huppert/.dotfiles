@@ -76,6 +76,13 @@ function zsh-edit() {
 	$EDITOR ~/.zshrc
 }
 
+# shickcd changes the current working directory to the location of the 
+# .dotfiles homeshick repo
+function shickcd() {
+	echo "Changing working directory to .dotfiles location"
+	homeshick cd .dotfiles
+}
+
 function wrk() {
 	cd ~/Documents/workspace/$1
 }
