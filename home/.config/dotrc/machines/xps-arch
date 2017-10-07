@@ -19,6 +19,20 @@ function polystart() {
 	$(cd ~ && nohup $HOME/.config/polybar/launch.sh > /dev/null)
 }
 
+# Setup second monitor
+function xtend-on() {
+	echo "Setting up extended display"
+	xrandr --output DP-1 --auto
+	xrandr --output DP-1 --above eDP-1
+	polystart
+}
+
+function xtend-off() {
+	echo "Shutting down extended display"
+	xrandr --output DP-1 --off
+	polystart
+}
+
 # APK Tool
 export PATH="$PATH:$HOME/Documents/bin/apktool"
 
