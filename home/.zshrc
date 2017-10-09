@@ -225,6 +225,25 @@ function venvactivate() {# virtual_env
 	source "$(venvdir $1)/bin/activate"
 }
 
+# Opens the install guide included in the github.com/Noah-Huppert/.dotfiles 
+# repository.
+#
+# No arguments are required. However if the first argument is "edit" the install 
+# guide will be opened up in the GitHub web editor interface.
+function install-guide() {
+	# Check if first argument is "edit"
+	if [[ "$1" == "edit" ]]; then
+		urlPostfix="/_edit"
+		openMode="edit"
+	else
+		openMode="view"
+	fi
+
+	# Open
+	echo "Opening .dotfiles install guide to $openMode"
+	xdg-open "https://github.com/Noah-Huppert/.dotfiles/wiki/System-Install$urlPostfix"
+}
+
 # -- -- Url decode and encode
 alias urldecode="python2 -c \"import sys, urllib as ul; [sys.stdout.write(ul.unquote_plus(l)) for l in sys.stdin]\""
 
