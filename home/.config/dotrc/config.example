@@ -10,7 +10,7 @@ export DOTRC_GOPATH=""
 # -- Set to true/false based on whether NVM is installed
 export DOTRC_NVM=true
 
-# -- Location of NVM
+# -- (Optional) Location of NVM
 export DOTRC_NVM_DIR=""
 
 # RVM

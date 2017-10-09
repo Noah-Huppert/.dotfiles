@@ -16,20 +16,45 @@ function b() {
 function polystart() {
 	# Run polybar launch script with nohup, redirect output to null
 	echo "Restarting Polybar"
-	$(cd ~ && nohup $HOME/.config/polybar/launch.sh > /dev/null)
+	$(cd ~ && nohup $HOME/.config/polybar/launch.sh > /dev/null) &
 }
+
+# Monitor variables: Hold xrandr output identifiers to use in xtend-{on,off} 
+# commands
+# Identifier for laptop screen
+export XRDR_LAPTOP="eDP-1"
+
+# Identifier for HDMI USB-C dongle output
+export XRDR_HDMI_DONGLE="DP-1"
 
 # Setup second monitor
 function xtend-on() {
 	echo "Setting up extended display"
-	xrandr --output DP-1 --auto
-	xrandr --output DP-1 --above eDP-1
+
+	# Set xrandr to extend HDMI dongle above monitor
+	echo "-- -- Configuring xrandr"
+
+	xrandr --output "$XRDR_HDMI_DONGLE" --auto
+	xrandr --output "$XRDR_LAPTOP" --below "$XRDR_HDMI_DONGLE"
+
+	# Restart polybar so it displays on both screens
+	echo "-- -- Restarting polybar"
 	polystart
+
+	# Map bspwm desktops: [0-5]: laptop, [6-10]: hdmi dongle
+	echo "-- -- Configuring bspwm desktops"
+	bspc monitor eDP-1 -n 0 -d I II III IV V
+	bspc monitor DP-1 -n 1 -d VI VII VIII IX X
 }
 
 function xtend-off() {
 	echo "Shutting down extended display"
-	xrandr --output DP-1 --off
+
+	# Use xrandr to turn off DP-1 output
+	echo "-- -- Turning off display with xrandr"
+	xrandr --output "$XRDR_HDMI_DONGLE" --off
+
+	# Restart polybar to only be on one display
 	polystart
 }
 
