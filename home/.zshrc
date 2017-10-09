@@ -1,6 +1,6 @@
 # Config
 # -- -- zsh
-{ source ~/Documents/bin/zshconf/zshconf.zsh } &> /dev/null
+{ source ~/Documents/bin/zshconf/zshconf.zsh } > /dev/null
 
 # -- -- Environment
 export EDITOR=nvim
@@ -26,7 +26,8 @@ fi
 export DOTRC_DIR="$HOME/.config/dotrc"
 export DOTRC_FILE="$DOTRC_DIR/config"
 
-function dotrc-edit() {
+# Edits the dotrc file
+function drc-edit() {
 	if [[ ! -f $DOTRC_FILE ]]; then
 		cp "$DOTRC_FILE.example" $DOTRC_FILE
 	fi
@@ -34,7 +35,8 @@ function dotrc-edit() {
 	$EDITOR $DOTRC_FILE
 }
 
-function dotrc-machine-edit() {
+# Edits a dotrc machine file specified by the first argument
+function drcm-edit() {
 	[ -z "$1" ] && echo "Expected 1 argument"
 
 	$EDITOR "$DOTRC_DIR/machines/$1"
@@ -86,6 +88,102 @@ function shickcd() {
 function wrk() {
 	cd ~/Documents/workspace/$1
 }
+
+# Prints the gocd help text
+function gocd-help() {
+	echo "gocd - Utlity for navigating directories located in \"\$GOPATH/src\""
+	printf "\n"
+	echo "USAGE"
+	printf "\n"
+	echo "    gocd <dir>"
+	printf "\n"
+	echo "ARGUMENTS"
+	printf "\n"
+	echo "    dir - Path to append onto \"\$GOPATH/src/\", which gocd will navigate to."
+	printf "\n"
+	echo "          For convience, if the first segment of this path is \"gh/\", it "
+	echo "          will be replaced with \"github.com/\". This allows for easier "
+	echo "          access to the \"\$GOPATH/src/github.com/\" directory."
+	printf "\n"
+	echo "          Another similar shortcut is available for one's GitHub username."
+	echo "          \"gh/\$GOCD_GH_USERNAME_SHORTCUT\" will be replaced with"
+	echo "          \"github.com/\$GOCD_GH_USERNAME_VALUE\"."
+	printf "\n"
+	echo "CONFIGURATION"
+	printf "\n"
+	echo "    GOCD_GH_USERNAME_SHORTCUT - The value which will be replaced by one's"
+	echo "                                GitHub username in the <path> argument."
+	printf "\n"
+	echo "    GOCD_GH_USERNAME - Value which will replace shortcut, short be user's"
+	echo "                       full GitHub username."
+	printf "\n"
+	echo "RETURN VALUES"
+	printf "\n"
+	echo "    0 - Success"
+	echo "    1 - General error"
+	echo "    2 - Incorrect invokation"
+	echo "    3 - Pre-condition fail"
+	printf "\n"
+}
+
+# Changes the current working directory to: $GOPATH/src/<dir>
+# Where <dir> is the first argument provided after gocd. 
+
+# If "gh" is the first element of the <dir> provided, it will be replaced with 
+# "github.com". This is a shortcut which allows you to easily access github.com 
+# hosted go projects like so: gocd gh/Noah-Huppert/blapchat
+function gocd() { # (dir)
+	# If no arguments, print help text
+	if [[ "$#" == "0" ]]; then
+		gocd-help
+	fi
+
+	# Check if dir was provided
+	dir="$1"
+	if [[ -z "$dir" ]]; then 
+		echo "Error: Path must be provided as first argument"
+		return 2
+	fi
+
+	# Check that dir is not: help, h, --help, -h, -help
+	if [[ "$1" =~ "^(help|--help|-help|h|-h)$" ]]; then
+		gocd-help
+		echo "Info: Interpreted first argument as request to display help"
+		return 2
+	fi
+
+	# Check $GOPATH exists
+	if [[ -z "$GOPATH" ]]; then
+		echo "Error: \$GOPATH must not be empty"
+		return 3
+	fi
+
+	# Replace GitHub username shortcut
+	dir=$(echo "$dir" | sed "s/^gh\/$GOCD_GH_USERNAME_SHORTCUT\//gh\/$GOCD_GH_USERNAME\//g")
+
+	# Replace "gh" shortcut
+	dir=$(echo "$dir" | sed "s/^gh\//github.com\//g")
+
+	# Combine $GOPATH and $dir
+	dir="src/$dir"
+	finalPath="$GOPATH/$dir"
+
+	# Check directory exists
+	if [[ ! -d  "$finalPath" ]]; then
+		echo "Error: Provided path must exists, was: \"$finalPath\""
+		return 3
+	fi
+
+	# Cd
+	echo "Changing to \$GOPATH/$dir"
+	cd "$finalPath"
+}
+
+# GOCD configuration variables, see gocd help text for more information
+# Sets the placeholder value a user can enter to refer to $GOCD_USERNAME_VALUE
+export GOCD_GH_USERNAME_SHORTCUT="nh"
+# Sets the value which will replace $GOCD_GH_USERNAME_SHORTCUT in gocd paths
+export GOCD_GH_USERNAME="Noah-Huppert"
 
 function mcdir() { # (dir)
 	mkdir -p $1
@@ -146,3 +244,6 @@ bindkey -v
 export KEYTIMEOUT=1
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+
+# Completion: TODO: WIP
+#export fpath="$fpath:$HOME/
