@@ -158,8 +158,10 @@ function gocd() { # (dir)
 		return 3
 	fi
 
-	# Replace GitHub username shortcut
-	dir=$(echo "$dir" | sed "s/^gh\/$GOCD_GH_USERNAME_SHORTCUT\//gh\/$GOCD_GH_USERNAME\//g")
+	# Replace GitHub username shortcut, if config vars are set
+	if [[ (! -z "$GOCD_GH_USERNAME_SHORTCUT") && (! -z "$GOCD_GH_USERNAME") ]]; then
+		dir=$(echo "$dir" | sed "s/^gh\/$GOCD_GH_USERNAME_SHORTCUT\//gh\/$GOCD_GH_USERNAME\//g")
+	fi
 
 	# Replace "gh" shortcut
 	dir=$(echo "$dir" | sed "s/^gh\//github.com\//g")
