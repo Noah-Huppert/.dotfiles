@@ -8,6 +8,12 @@ export EDITOR=nvim
 # -- -- GPG TTY
 export GPG_TTY=$(tty)
 
+# -- -- Tmux
+# if not already running
+if [[ -z "$TMUX" ]]; then
+	tmux
+fi
+
 # Config dir
 export XDG_CONFIG_HOME="$HOME/.config"
 
@@ -78,9 +84,9 @@ function zsh-edit() {
 	$EDITOR ~/.zshrc
 }
 
-# shickcd changes the current working directory to the location of the 
-# .dotfiles homeshick repo
-function shickcd() {
+# changes the current working directory to the location of the .dotfiles 
+# homeshick repo
+function .filescd() {
 	echo "Changing working directory to .dotfiles location"
 	homeshick cd .dotfiles
 }
@@ -237,6 +243,7 @@ function install-guide() {
 		openMode="edit"
 	else
 		openMode="view"
+		urlPostfix=""
 	fi
 
 	# Open
