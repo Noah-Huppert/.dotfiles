@@ -231,6 +231,15 @@ function venvactivate() {# virtual_env
 	source "$(venvdir $1)/bin/activate"
 }
 
+# copies stdin to clipboard
+function copy() {
+	xclip -selection clipboard
+}
+
+function paste() {
+	xclip -o -selection clipboard
+}
+
 # Opens the install guide included in the github.com/Noah-Huppert/.dotfiles 
 # repository.
 #
