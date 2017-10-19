@@ -17,6 +17,19 @@ export DOTRC_NVM_DIR=""
 # -- Set to true/false based on whether RVM is installed
 export DOTRC_RVM=false
 
+# Set if ruby is installed, will add gem bin to path
+export DOTRC_RUBY=false
+
+# Backlight 
+# -- -- Path to file which controls raw backlight value
+export DOTRC_BKLIGHT_CTRL_FILE="/sys/class/backlight/intel_backlight/brightness"
+
+# -- -- Path to value which contains the maximum allowed raw backlight value
+export DOTRC_BKLIGHT_MAX_FILE="/sys/class/backlight/intel_backlight/max_brightness"
+
+# -- -- (Optional) Percentage ([0, 100]) to increment backlight, defaults to 10
+#export DOTRC_BKLIGHT_INCREMENT=
+
 # Custom path for machine, appened onto $PATH
 export DOTRC_PATH=""
 

@@ -10,7 +10,9 @@ export GPG_TTY=$(tty)
 
 # -- -- Tmux
 # if not already running
-if [[ -z "$TMUX" ]]; then
+# and we are running in a GUI environment (we don't 
+# want to start tmux unless we have already run startx, b/c startx can not run in tmux)
+if [[ ( -z "$TMUX" ) && ( ! -z "$DISPLAY") ]]; then
 	tmux
 fi
 
@@ -68,12 +70,142 @@ if [[ -f $DOTRC_FILE ]]; then
 else
 	llog $LOG_ERROR "dotrc file not found, run `dotrc-edit` (expected: $DOTRC_FILE)"
 	llog $LOG_ERROR ".zshrc will not load"
-	exit 1
+	return 1
 fi
 
 if [[ -n $DOTRC_PATH ]]; then
 	export PATH="$PATH:$DOTRC_PATH"
 fi
+
+# Backlight
+# -- -- Default value to increment backlight by
+export DOTRC_BKLIGHT_INCREMENT_DEFAULT=10
+
+# -- -- Get the raw backlight value
+function bklight-value() {
+	echo $(cat $DOTRC_BKLIGHT_CTRL_FILE)
+}
+
+# -- -- Get the percent backlight value. An optional first argument specifying 
+#       a raw backlight value can be provided. If present the percent will be 
+#       calculated using the provided backlight value
+function bklight-value-percent() {
+	# Check first argument
+	if [[ -z "$1" ]]; then
+		numerator="$(bklight-value)"
+	else
+		numerator="$1"
+	fi
+
+	echo "scale=2; $numerator / $(bklight-value-max)" | bc
+}
+
+# -- -- Get raw max backlight values
+function bklight-value-max() {
+	echo $(cat $DOTRC_BKLIGHT_MAX_FILE)
+}
+
+# -- -- Control the raw value of the backlight with $1, must be between 
+#       [0, $(bklight-value-max)]
+function bklight-raw() {
+	# Check first argument
+	if [[ -z "$1" ]];then
+		echo "Error: Expected 1 argument"
+		return 1
+	elif [[ (("$1" < 0)) && (("$1" > "$(bklight-value-max)")) ]]; then
+		echo "Error: First argument must be in range [0, $(bklight-value-max)]"
+		return 1
+	fi
+
+	# Check in range
+	value="$1"
+
+	if [[ (( "$value" < 0 )) ]]; then 
+		overflowDir="below 0"
+		newVal=0
+	elif [[  (( "$value" > "$(bklight-value-max)" )) ]]; then
+		newVal="$(bklight-value-max)"
+		overflowDir="above $newVal"
+	fi
+
+	if [[ -z "$newVal" ]]; then
+		echo "Warning: value out of range ($overflowDir), setting to $newVal"
+		value="$newVal"
+	fi
+
+	echo "Setting backlight to ($value / $(bklight-value-max)), using sudo..."
+	sudo tee "$DOTRC_BKLIGHT_CTRL_FILE" <<< "$value"
+}
+
+# -- -- Control the value of the backlight via a percent value provide as the 
+#       first argument. Should be in range [0, 100].
+function bklight() {
+	# Check first argument
+	if [[ -z "$1" ]]; then
+		echo "Error: Expected 1 argument"
+		return 1
+	elif [[ (("$1" < 0)) && (("$1" > 100)) ]]; then
+		echo "Error: First argument not in range [0, 100]"
+		return 1
+	fi
+
+	# Calculate raw backlight value
+	percentRaw="$1"
+	percent=$(echo "scale=2; ($percentRaw / 100)" | bc)
+	value=$(echo "scale=2; $percent * $(bklight-value-max)" | bc)
+	value=$(printf "%.0f" "$value")
+
+	# Set
+	echo "Setting backlight to $percentRaw%"
+	bklight-raw "$value"
+}
+
+
+# -- -- Returns the percent to increment the backlight by. Default to 
+#       DOTRC_BKLIGHT_INCREMENT_DEFAULT but can be overridden by 
+#       DOTRC_BKLIGHT_INCREMENT
+function bklight-increment-percent() {
+	# Check if specified
+	if [[ ! -z "$DOTRC_BKLIGHT_INCREMENT" ]]; then
+		echo "$DOTRC_BKLIGHT_INCREMENT"
+	else
+		# If not default
+		echo "$DOTRC_BKLIGHT_INCREMENT_DEFAULT"
+	fi
+}
+
+# -- -- Returns the raw amount to increment the backlight value by. Determined 
+#       via (bklight-increment-percent * bklight-value-max)
+function bklight-increment-value() {
+	echo "$(bklight-value-max) / $(bklight-increment-percent)" | bc
+}
+
+# -- -- Increments backlight by bklight-increment-value. First argument should 
+#       be the increment direction, either "up" or "down"
+function bklight-increment() {
+	# Check first argument
+	if [[ -z "$1" ]]; then
+		echo "Error: Expected 1 argument"
+		return 1
+	fi
+
+	# Set direction operator
+	if [[ "$1" == "up" ]]; then
+		direction="+"
+	elif [[ "$1" == "down" ]]; then
+		direction="-"
+	else
+		echo "Error: First argument is not \"up\" or \"down\""
+		return 1
+	fi
+
+	# Determine new value
+	val=$(echo "$(bklight-value) $direction $(bklight-increment-value)" | bc)
+
+	# Set
+	echo "Incremening backlight by ${direction}$(bklight-increment-percent)% (${direction}$(bklight-increment-value) raw) to $(bklight-value-percent $val)% ($val raw)"
+	bklight-raw "$val"
+}
 
 # -- -- Alias
 function zsh-reload() {
@@ -260,6 +392,12 @@ function install-guide() {
 	xdg-open "https://github.com/Noah-Huppert/.dotfiles/wiki/System-Install$urlPostfix"
 }
 
+# Clears the nvim swap directory
+function nvim-swap-clear() {
+	echo "Clearning nvim swap directory"
+	rm $HOME/.local/share/nvim/swap/*.swp
+}
+
 # -- -- Url decode and encode
 alias urldecode="python2 -c \"import sys, urllib as ul; [sys.stdout.write(ul.unquote_plus(l)) for l in sys.stdin]\""
 
@@ -282,15 +420,19 @@ if [[ $DOTRC_NVM == true ]]; then
 fi
 
 # -- -- Go
-if [[ $DOTRC_GO == true ]]; then
+if [[ "$DOTRC_GO" == "true" ]]; then
 	export GOPATH=$DOTRC_GOPATH
 	export PATH="$PATH:$GOPATH/bin"
 fi
 
 # -- -- RVM
-if [[ $DOTRC_RVM == true ]]; then
+if [[ "$DOTRC_RVM" == "true" ]]; then
 	export PATH="$PATH:$HOME/.rvm/bin"
 	[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+fi
+
+if [[ "$DOTRC_RUBY" == "true" ]]; then
+	PATH="$PATH:$(ruby -e 'print Gem.user_dir')/bin"
 fi
 
 # Enable Vim mode in zsh
@@ -301,3 +443,6 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 # Completion: TODO: WIP
 #export fpath="$fpath:$HOME/
+
+# added by travis gem
+[ -f /home/noah/.travis/travis.sh ] && source /home/noah/.travis/travis.sh
