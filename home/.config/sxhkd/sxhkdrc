@@ -7,8 +7,10 @@ super + Return
 	alacritty
 
 # program launcher
+# -i   = case insensitive
+# -l 6 = top 6 matches in a verticle list
 super + @space
-	dmenu_run
+	dmenu_run -i -l 6
 
 # make sxhkd reload its configuration files:
 super + Escape
@@ -143,5 +145,17 @@ shift + XF86MediaLowerVolume
 # Lock
 #
 ctrl + alt + l
-	i3lock -i /usr/share/pixmaps/rocks.png
+	i3lock -i /usr/share/pixmaps/seattle-needle.jpg
 
+#
+# Brightness
+#
+#XF86MonBrightnessDown
+super + <
+	sudo tee "$DOTRC_BKLIGHT_CTRL_FILE" <<< 100
+#	bklight-increment down
+
+#XF86MonBrightnessUp
+super + >
+	sudo tee "$DOTRC_BKLIGHT_CTRL_FILE" <<< 900
+#	bklight-increment up
