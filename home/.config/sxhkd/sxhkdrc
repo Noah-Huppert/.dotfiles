@@ -9,8 +9,13 @@ super + Return
 # program launcher
 # -i   = case insensitive
 # -l 6 = top 6 matches in a verticle list
+# -nb ... = normal background to purple
+# -sb ... = selectect background to dark purple
+# -nf ... = normal foreground to black
+# -sf ... = selected foreground to white
+# -fn ... = font name to Source Code Pro
 super + @space
-	dmenu_run -i -l 6
+	dmenu_run -i -l 6 -nb "#e040fb" -sb "#aa01c7" -nf "#000000" -sf "#ffffff" -fn "Source Code Pro"
 
 # make sxhkd reload its configuration files:
 super + Escape
