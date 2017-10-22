@@ -4,17 +4,10 @@
 
 # -- -- Environment
 export EDITOR=nvim
+export PAGER=less
 
 # -- -- GPG TTY
 export GPG_TTY=$(tty)
-
-# -- -- Tmux
-# if not already running
-# and we are running in a GUI environment (we don't 
-# want to start tmux unless we have already run startx, b/c startx can not run in tmux)
-if [[ ( -z "$TMUX" ) && ( ! -z "$DISPLAY") ]]; then
-	tmux
-fi
 
 # Config dir
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -29,6 +22,10 @@ fi
 if [[ "$SSH_AGENT_PID" == "" ]]; then
 	eval "$(<$RC_SSH_AGENT_INFO)" > /dev/null
 fi
+
+# Custom scripts bin
+export ZSHRC_BIN_DIR="$HOME/Documents/bin/scripts"
+export PATH="$PATH:$ZSHRC_BIN_DIR"
 
 # -- -- .dotrc
 export DOTRC_DIR="$HOME/.config/dotrc"
@@ -363,15 +360,6 @@ function venvactivate() {# virtual_env
 	source "$(venvdir $1)/bin/activate"
 }
 
-# copies stdin to clipboard
-function copy() {
-	xclip -selection clipboard
-}
-
-function paste() {
-	xclip -o -selection clipboard
-}
-
 # Opens the install guide included in the github.com/Noah-Huppert/.dotfiles 
 # repository.
 #
@@ -390,12 +378,6 @@ function install-guide() {
 	# Open
 	echo "Opening .dotfiles install guide to $openMode"
 	xdg-open "https://github.com/Noah-Huppert/.dotfiles/wiki/System-Install$urlPostfix"
-}
-
-# Clears the nvim swap directory
-function nvim-swap-clear() {
-	echo "Clearning nvim swap directory"
-	rm $HOME/.local/share/nvim/swap/*.swp
 }
 
 # -- -- Url decode and encode
@@ -446,3 +428,14 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 # added by travis gem
 [ -f /home/noah/.travis/travis.sh ] && source /home/noah/.travis/travis.sh
+
+# -- -- Tmux
+# if not already running
+# and we are running in a GUI environment (we don't 
+# want to start tmux unless we have already run startx, b/c startx can not run in tmux)
+if [[ ( -z "$TMUX" ) && ( ! -z "$DISPLAY") ]]; then
+	tmux
+# If we are running tmux
+elif [[ ! -z "$TMUX" ]]; then
+	tmux source-file "$HOME/.tmux.conf"
+fi
