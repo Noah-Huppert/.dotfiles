@@ -3,6 +3,7 @@
 { source ~/Documents/bin/zshconf/zshconf.zsh } > /dev/null
 
 # -- -- Environment
+export TERMINAL=alacritty
 export EDITOR=nvim
 export PAGER=less
 
@@ -255,6 +256,9 @@ alias urldecode="python2 -c \"import sys, urllib as ul; [sys.stdout.write(ul.unq
 
 alias urlencode="python2 -c \"import sys, urllib as ul; [sys.stdout.write(ul.quote_plus(l)) for l in sys.stdin]\""
 
+# -- -- One char less alias
+alias l=less
+
 # -- -- Homeshick
 source "$HOME/.homesick/repos/homeshick/homeshick.sh"
 fpath=($HOME/.homesick/repos/homeshick/completions $fpath)
@@ -304,7 +308,7 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 # and we are running in a GUI environment (we don't 
 # want to start tmux unless we have already run startx, b/c startx can not run in tmux)
 if [[ ( -z "$TMUX" ) && ( ! -z "$DISPLAY") ]]; then
-	tmux
+	tmux && exit
 # If we are running tmux
 elif [[ ! -z "$TMUX" ]]; then
 	tmux source-file "$HOME/.tmux.conf"
