@@ -6,6 +6,9 @@
 super + Return
 	alacritty
 
+super + shift + Return
+	TERMINAL=alacritty fterm
+
 # program launcher
 # -i   = case insensitive
 # -l 6 = top 6 matches in a verticle list
@@ -150,7 +153,7 @@ shift + XF86MediaLowerVolume
 # Lock
 #
 ctrl + alt + l
-	i3lock -i /usr/share/pixmaps/seattle-needle.jpg
+	i3lock -i /usr/share/pixmaps/commet.png
 
 #
 # Brightness
