@@ -11,37 +11,43 @@ augroup END " }
 " set vim shell to bash for Vundle
 " set shell=~/.vim/shell-wrapper.sh
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+" Vim Plug
+" Install with:
+"     curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+call plug#begin('~/.vim/plugged')
 
-" Vundle install instructions
-" git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-
-Plugin 'VundleVim/Vundle.vim'
+Plug 'VundleVim/Vundle.vim'
 
 " -- Style
-" Plugin 'altercation/vim-colors-solarized'
-" Plugin 'whatyouhide/vim-gotham'
-Plugin 'morhetz/gruvbox'
+" Plug 'altercation/vim-colors-solarized'
+" Plug 'whatyouhide/vim-gotham'
+Plug 'morhetz/gruvbox'
 
 " -- Behavior
-Plugin 'qpkorr/vim-bufkill'
-Plugin 'bling/vim-bufferline'
-Plugin 'Townk/vim-autoclose'
+Plug 'qpkorr/vim-bufkill'
+Plug 'bling/vim-bufferline'
+Plug 'Townk/vim-autoclose'
 
 " -- Language
-Plugin 'sheerun/vim-polyglot'
-Plugin 'rust-lang/rust.vim'
-Plugin 'tikhomirov/vim-glsl'
+Plug 'sheerun/vim-polyglot'
+Plug 'rust-lang/rust.vim'
+Plug 'tikhomirov/vim-glsl'
 
 " -- -- Go
-Plugin 'fatih/vim-go'
+Plug 'fatih/vim-go'
 
+" -- -- Code style
+Plug 'editorconfig/editorconfig-vim'
 
-Plugin 'editorconfig/editorconfig-vim'
+" -- -- Code completion
+Plug 'Shougo/deoplete.nvim'
+let g:deoplete#enable_at_startup = 1
 
-call vundle#end()
+" Install gcode with: go get -u github.com/nsf/gocode
+Plug 'zchee/deoplete-go', { 'do': 'make'}
+let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
+
+call plug#end()
 
 " Theme
 syntax enable
@@ -103,4 +109,17 @@ map <C-d> :bnext<CR>
 map <C-c> :BD<cr>
 
 filetype plugin indent on
+
+" -- -- Code folding
+set foldenable
+set foldmethod=marker
+au FileType sh let g:sh_fold_enabled=5
+au FileType sh let g:ls_bash=0
+au FileType sh set foldmethod=syntax
+syntax enable
+
 :filetype plugin on
+
+" -- -- Code Completion
+set completeopt+=noinsert
+set completeopt+=noselect
