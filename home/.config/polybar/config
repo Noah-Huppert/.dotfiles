@@ -44,10 +44,10 @@ foreground = ${colors.foreground}
 # Fonts
 ;font-0 = fixed:pixelsize=10;3
 ;font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
-;font-2 = siji:pixelsize=10;1
 font-0 = Roboto:size=12;3
 font-1 = FontAwesome:size=14:antialias=true;3
 font-2 = MaterialIcons:size=14:antialias=true;3
+font-3 = siji:pixelsize=10;1
 
 # Which modules to show
 modules-left = bspwm
