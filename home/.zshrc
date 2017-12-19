@@ -204,6 +204,10 @@ function gocd() { # (dir)
 	cd "$finalPath"
 }
 
+function cdscripts() {
+	cd "$HOME/Documents/bin/scripts/"
+}
+
 # GOCD configuration variables, see gocd help text for more information
 # Sets the placeholder value a user can enter to refer to $GOCD_USERNAME_VALUE
 export GOCD_GH_USERNAME_SHORTCUT="nh"
