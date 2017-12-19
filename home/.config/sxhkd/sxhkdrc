@@ -158,12 +158,20 @@ ctrl + alt + l
 #
 # Brightness
 #
-#XF86MonBrightnessDown
-super + <
-	sudo tee "$DOTRC_BKLIGHT_CTRL_FILE" <<< 100
-#	bklight-increment down
+XF86MonBrightnessDown
+	sudo bklight increment down
 
-#XF86MonBrightnessUp
-super + >
-	sudo tee "$DOTRC_BKLIGHT_CTRL_FILE" <<< 900
-#	bklight-increment up
+XF86MonBrightnessUp
+	sudo bklight increment up
+
+super + XF86MonBrightnessDown
+	sudo bklight increment down 33
+
+super + XF86MonBrightnessUp
+	sudo bklight increment up 33
+
+#
+# Screenshot
+#
+super + alt + s
+	scrot
