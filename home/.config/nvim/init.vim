@@ -47,6 +47,15 @@ let g:deoplete#enable_at_startup = 1
 Plug 'zchee/deoplete-go', { 'do': 'make'}
 let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
 
+" C++
+" Install libclang python bindings: pip install --user nose
+Plug 'zchee/deoplete-clang'
+let g:deoplete#sources#clang#libclang_path = '/usr/lib/libclang.so'
+let g:deoplete#sources#clang#clang_header = '/usr/lib/clang/'
+
+" Doxygen
+Plug 'vim-scripts/DoxygenToolkit.vim'
+
 call plug#end()
 
 " Theme
