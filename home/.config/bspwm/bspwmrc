@@ -1,7 +1,8 @@
 #! /bin/sh
 
 # sxhkd
-sxhkd &
+rm $HOME/Documents/logs/sxhkd.log || true
+sxhkd -r $HOME/Documents/logs/sxhkd.log &
 
 # compton
 compton --config ~/.config/compton/compton.conf &
