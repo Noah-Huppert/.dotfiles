@@ -46,13 +46,13 @@ foreground = ${colors.foreground}
 ;font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-0 = Roboto:size=12;3
 font-1 = FontAwesome:size=14:antialias=true;3
-font-2 = MaterialIcons:size=14:antialias=true;3
+font-2 = MaterialIcons:size=14:antialias=true;5
 font-3 = siji:pixelsize=10;1
 
 # Which modules to show
 modules-left = bspwm
 modules-center = 
-modules-right = filesystem xbacklight volume wlan xkeyboard battery date
+modules-right = filesystem volume eth wlan xkeyboard backlight battery date
 
 # Map scrollwheel to bspwm workspace change
 scroll-up = bspwm-desknext
@@ -122,24 +122,39 @@ type = internal/network
 interface = wlan0
 interval = 3.0
 
-format-connected = <ramp-signal> <label-connected>
+format-connected =  <label-connected> <ramp-signal>
 format-connected-underline = #9f78e1
 label-connected = %essid%
 
-format-disconnected =
+format-disconnected = No WiFi
 ;format-disconnected = <label-disconnected>
 ;format-disconnected-underline = ${self.format-connected-underline}
 ;label-disconnected = %ifname% disconnected
 ;label-disconnected-foreground = ${colors.foreground}
 
-ramp-signal-0 = 
-ramp-signal-1 = 
-ramp-signal-2 = 
-ramp-signal-3 = 
-ramp-signal-4 = 
+ramp-signal-0 = 
+ramp-signal-1 = 
+ramp-signal-2 = 
+ramp-signal-3 = 
+ramp-signal-4 = 
+ramp-signal-5 = 
 ramp-signal-foreground = ${colors.foreground}
 
+[module/eth]
+type = internal/network
+interface = eth0
+interval = 3.0
 
+format-connected-underline = #55aa55
+format-connected-prefix = " "
+format-connected-prefix-foreground = ${colors.foreground}
+label-connected = %local_ip%
+
+format-disconnected = " "
+;format-disconnected = <label-disconnected>
+;format-disconnected-underline = ${self.format-connected-underline}
+;label-disconnected = %ifname% disconnected
+;label-disconnected-foreground = ${colors.foreground}
 
 [module/mpd]
 type = internal/mpd
@@ -154,43 +169,16 @@ icon-next = 
 label-song-maxlen = 25
 label-song-ellipsis = true
 
-[module/xbacklight]
-type = internal/xbacklight
-
-format = <label> <bar>
-label = BL
-
-bar-width = 10
-bar-indicator = |
-bar-indicator-foreground = ${colors.foreground-alt}
-bar-indicator-font = 2
-bar-fill = ─
-bar-fill-font = 2
-bar-fill-foreground = #9f78e1
-bar-empty = ─
-bar-empty-font = 2
-bar-empty-foreground = ${colors.foreground}
-
-[module/backlight-acpi]
-inherit = module/xbacklight
+[module/backlight]
 type = internal/backlight
 card = intel_backlight
 
-[module/eth]
-type = internal/network
-interface = 
-interval = 3.0
-
-format-connected-underline = #55aa55
-format-connected-prefix = " "
-format-connected-prefix-foreground = ${colors.foreground}
-label-connected = %local_ip%
-
-format-disconnected =
-;format-disconnected = <label-disconnected>
-;format-disconnected-underline = ${self.format-connected-underline}
-;label-disconnected = %ifname% disconnected
-;label-disconnected-foreground = ${colors.foreground}
+format = <ramp> <label>
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-3 = 
+ramp-4 = 
 
 [module/date]
 type = internal/date
