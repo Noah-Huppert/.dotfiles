@@ -2,10 +2,6 @@
 foreground = #000000
 foreground-alt = #ffffff
 
-;primary = #f44336
-;primary = #fb8c00
-;primary-light = #ffbd45
-;primary-dark = #c25e00
 primary = #e040fb
 primary-light = #ff86ff
 primary-dark = #aa01c7
@@ -15,9 +11,6 @@ secondary = #512da8
 secondary-dark = #140078
 secondary-light = #8559da
 
-;highlight = #e040fb
-;highlight-light = #ff86ff
-;highlight-dark = #aa01c7
 highlight = #f44336
 highlight-light = #ff7961
 highlight-dark = #ba000d
@@ -42,12 +35,10 @@ background = ${colors.primary}
 foreground = ${colors.foreground}
 
 # Fonts
-;font-0 = fixed:pixelsize=10;3
-;font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-0 = Roboto:size=12;3
-font-1 = FontAwesome:size=14:antialias=true;3
-font-2 = MaterialIcons:size=14:antialias=true;5
-font-3 = siji:pixelsize=10;1
+font-1 = MaterialIcons:size=14:antialias=true;5
+font-2 = siji:pixelsize=10;1
+font-3 = RobotoMono Nerd Font:size=12;3
 
 # Which modules to show
 modules-left = bspwm
@@ -91,7 +82,7 @@ interval = 25
 
 mount-0 = /
 
-label-mounted =  %free%
+label-mounted = "  %free%"
 #%{F#0a81f5}%mountpoint%%{F-}: %percentage_used%%
 label-unmounted = %mountpoint% not mounted
 label-unmounted-foreground = ${colors.foreground}
@@ -122,7 +113,7 @@ type = internal/network
 interface = wlan0
 interval = 3.0
 
-format-connected =  <label-connected> <ramp-signal>
+format-connected =  <label-connected> <ramp-signal>
 format-connected-underline = #9f78e1
 label-connected = %essid%
 
@@ -202,11 +193,11 @@ label = %date% %time%
 type = internal/volume
 
 format-volume = <label-volume> <bar-volume> 
-label-volume = %percentage%% 
+label-volume = %percentage%% 
 label-volume-foreground = ${root.foreground}
 
 format-muted-foreground = ${colors.foreground}
-label-muted = 
+label-muted = 
 ;
 ; 
 
@@ -243,7 +234,7 @@ format-full-prefix = 
 format-full-prefix-foreground = ${colors.foreground}
 format-full-underline = ${self.format-charging-underline}
 
-ramp-capacity-0 = 
+ramp-capacity-0 = 
 ramp-capacity-1 = 
 ramp-capacity-2 = 
 ramp-capacity-3 = 
