@@ -117,7 +117,7 @@ format-connected =  <label-connected> <ramp-signal>
 format-connected-underline = #9f78e1
 label-connected = %essid%
 
-format-disconnected = No WiFi
+format-disconnected =  No WiFi 
 ;format-disconnected = <label-disconnected>
 ;format-disconnected-underline = ${self.format-connected-underline}
 ;label-disconnected = %ifname% disconnected
