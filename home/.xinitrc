@@ -5,7 +5,7 @@
 export _JAVA_AWT_WM_NONREPARENTING=1
 
 # Set background
-feh --bg-scale /usr/share/pixmaps/seattle-needle.jpg
+bkground
 
 # WM
 exec bspwm 
