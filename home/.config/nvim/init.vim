@@ -41,6 +41,7 @@ Plug 'editorconfig/editorconfig-vim'
 
 " -- -- Code completion
 Plug 'Shougo/deoplete.nvim'
+Plug 'zchee/deoplete-jedi'
 let g:deoplete#enable_at_startup = 1
 
 " Install gcode with: go get -u github.com/nsf/gocode
@@ -59,11 +60,17 @@ Plug 'vim-scripts/DoxygenToolkit.vim'
 call plug#end()
 
 " Theme
-syntax enable
+"syntax enable
+syntax on
 set background=dark
 set number
 colorscheme gruvbox
 "let g:solarized_termcolors=256
+
+" Search color
+set hlsearch
+hi clear Search ctermfg
+hi Search cterm=NONE ctermfg=grey
 
 " General config
 set spell
