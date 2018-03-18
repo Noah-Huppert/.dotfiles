@@ -4,6 +4,7 @@
 
 # -- -- Environment
 export TERMINAL=alacritty
+export TERM="$TERMINAL"
 export EDITOR=nvim
 export PAGER=less
 
@@ -317,3 +318,5 @@ if [[ ( -z "$TMUX" ) && ( ! -z "$DISPLAY") ]]; then
 elif [[ ! -z "$TMUX" ]]; then
 	tmux source-file "$HOME/.tmux.conf"
 fi
+
+export JAVA_OPTS='-XX:+IgnoreUnrecognizedVMOptions --add-modules java.se.ee'
