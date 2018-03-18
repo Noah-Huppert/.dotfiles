@@ -57,6 +57,9 @@ let g:deoplete#sources#clang#clang_header = '/usr/lib/clang/'
 " Doxygen
 Plug 'vim-scripts/DoxygenToolkit.vim'
 
+" Javascript
+Plug 'jelera/vim-javascript-syntax'
+
 call plug#end()
 
 " Theme
