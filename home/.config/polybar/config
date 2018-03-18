@@ -1,15 +1,25 @@
 [colors]
-foreground = #000000
-foreground-alt = #ffffff
+#foreground = #000000
+#foreground-alt = #ffffff
+foreground = #d1c4e9
+foreground-alt = #000000
 
-primary = #e040fb
-primary-light = #ff86ff
-primary-dark = #aa01c7
+# Purple Schema:
+#primary = #e040fb
+#primary-light = #ff86ff
+#primary-dark = #aa01c7
 
+#secondary = #512da8
+#secondary-dark = #140078
+#secondary-light = #8559da
 
-secondary = #512da8
-secondary-dark = #140078
-secondary-light = #8559da
+primary = #4a138c
+primary-light = #7c42bd
+primary-dark = #12005e
+
+secondary = #f50057
+secondary-light = #ff5983
+secondary-dark = #ba002f
 
 highlight = #f44336
 highlight-light = #ff7961

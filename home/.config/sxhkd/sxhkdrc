@@ -18,7 +18,7 @@ super + shift + Return
 # -sf ... = selected foreground to white
 # -fn ... = font name to Source Code Pro
 super + @space
-	dmenu_run -i -l 6 -nb "#e040fb" -sb "#aa01c7" -nf "#000000" -sf "#ffffff" -fn "Source Code Pro"
+	dmenu_run -i -l 6 -nb "#4a138c" -sb "#7c42bd" -nf "#ffffff" -sf "#ffffff" -fn "Source Code Pro"
 
 # make sxhkd reload its configuration files:
 super + Escape
@@ -153,7 +153,7 @@ shift + XF86MediaLowerVolume
 # Lock
 #
 ctrl + alt + l
-	i3lock -i "$HOME/Documents/pictures/winter.png"
+	i3lock -i "$HOME/Documents/pictures/skyline-large.png"
 
 #
 # Brightness
