@@ -116,7 +116,7 @@ label-indicator-padding = 2
 label-indicator-margin = 1
 label-indicator-background = ${colors.primary-dark}
 label-indicator-underline = ${colors.secondary}
-label-indicator-foreground = ${colors.foreground-alt}
+label-indicator-foreground = ${colors.foreground}
 
 [module/wlan]
 type = internal/network
