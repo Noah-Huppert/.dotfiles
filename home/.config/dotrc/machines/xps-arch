@@ -60,8 +60,5 @@ export PATH="$PATH:/opt/google-cloud-sdk/bin"
 # -- -- appconf tool
 export PATH="$PATH:$HOME/Documents/workspace/work/AdmitHub/infrastructure-core/appconf"
 
-# Backblaze b2
-alias b2=backblaze-b2
-
 # Android NDK
 export ANDROID_NDK_HOME="/opt/android-ndk"
