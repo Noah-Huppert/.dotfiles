@@ -14,4 +14,4 @@
 	pu = pull
 	pul = pull origin master
 [push]
-	default = simple
+	default = current
