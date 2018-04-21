@@ -2,7 +2,7 @@
 function polystart() {
 	# Run polybar launch script with nohup, redirect output to null
 	echo "Restarting Polybar"
-	$(cd ~ && nohup $HOME/.config/polybar/launch.sh > /dev/null) &
+	($HOME/.config/polybar/launch.sh > /dev/null 2>&1) & disown
 }
 
 # Monitor variables: Hold xrandr output identifiers to use in xtend-{on,off} 
