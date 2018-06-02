@@ -15,13 +15,20 @@ export XRDR_HDMI_DONGLE="DP-1"
 
 # Setup second monitor
 function xtend-on() {
+	# Arguments
+	xtend_dir="--below"
+	if [ ! -z "$1"  ]; then
+		xtend_dir="$1"
+	fi
+
 	echo "Setting up extended display"
 
-	# Set xrandr to extend HDMI dongle above monitor
+	# Set xrandr to extend HDMI dongle
 	echo "-- -- Configuring xrandr"
+	echo "          Laptop to the $xtend_dir of monitor"
 
 	xrandr --output "$XRDR_HDMI_DONGLE" --auto
-	xrandr --output "$XRDR_LAPTOP" --below "$XRDR_HDMI_DONGLE"
+	xrandr --output "$XRDR_LAPTOP" "$xtend_dir" "$XRDR_HDMI_DONGLE"
 
 	# Restart polybar so it displays on both screens
 	echo "-- -- Restarting polybar"
@@ -29,8 +36,12 @@ function xtend-on() {
 
 	# Map bspwm desktops: [0-5]: laptop, [6-10]: hdmi dongle
 	echo "-- -- Configuring bspwm desktops"
-	bspc monitor eDP-1 -n 0 -d I II III IV V
-	bspc monitor DP-1 -n 1 -d VI VII VIII IX X
+	bspc monitor "$XRDR_LAPTOP" -n 0 -d I II III IV V
+	bspc monitor "$XRDR_HDMI_DONGLE" -n 1 -d VI VII VIII IX X
+	
+	# Fix background
+	echo "-- -- Fixing background"
+	bkground
 }
 
 function xtend-off() {
@@ -39,6 +50,10 @@ function xtend-off() {
 	# Use xrandr to turn off DP-1 output
 	echo "-- -- Turning off display with xrandr"
 	xrandr --output "$XRDR_HDMI_DONGLE" --off
+
+	# Configure bspwm desktops
+	echo "-- -- Configuring bspwm desktops"
+	bspc monitor -d I II III IV V VI VII VIII IX X
 
 	# Restart polybar to only be on one display
 	polystart
