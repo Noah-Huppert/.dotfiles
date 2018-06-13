@@ -75,5 +75,6 @@ export PATH="$PATH:/opt/google-cloud-sdk/bin"
 # -- -- appconf tool
 export PATH="$PATH:$HOME/Documents/workspace/work/AdmitHub/infrastructure-core/appconf"
 
-# Android NDK
+# Android
 export ANDROID_NDK_HOME="/opt/android-ndk"
+export ANDROID_SDK_ROOT="/opt/android-sdk/"
