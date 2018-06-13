@@ -27,7 +27,7 @@ fi
 
 # Custom scripts bin
 export ZSHRC_BIN_DIR="$HOME/Documents/bin/scripts"
-export PATH="$PATH:$ZSHRC_BIN_DIR"
+export PATH="$ZSHRC_BIN_DIR:$PATH"
 
 # -- -- .dotrc
 export DOTRC_DIR="$HOME/.config/dotrc"
@@ -319,4 +319,4 @@ elif [[ ! -z "$TMUX" ]]; then
 	tmux source-file "$HOME/.tmux.conf"
 fi
 
-export JAVA_OPTS='-XX:+IgnoreUnrecognizedVMOptions --add-modules java.se.ee'
+#export JAVA_OPTS='-XX:+IgnoreUnrecognizedVMOptions --add-modules java.se.ee'
