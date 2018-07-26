@@ -71,6 +71,9 @@ export PATH="$PATH:$HOME/.local/bin"
 # Google Cloud Bin
 export PATH="$PATH:/opt/google-cloud-sdk/bin"
 
+# Dart
+export PATH="$PATH:/opt/dart-sdk-dev/bin:$HOME/.pub-cache/bin"
+
 # Admithub
 # -- -- appconf tool
 export PATH="$PATH:$HOME/Documents/workspace/work/AdmitHub/infrastructure-core/appconf"
