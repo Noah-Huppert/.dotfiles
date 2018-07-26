@@ -4,7 +4,7 @@
 
 # -- -- Environment
 export TERMINAL=alacritty
-export TERM="$TERMINAL"
+export TERM="alacritty"
 export EDITOR=nvim
 export PAGER=less
 
