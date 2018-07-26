@@ -94,6 +94,10 @@ super + {o,i}
 super + {_,shift + }{1-9,0}
 	bspc {desktop -f,node -d} '^{1-9,10}'
 
+# Rotate desktop
+super + {_,shift + }r
+	bspc node @/ --rotate {90,-90}
+
 #
 # preselect
 #
