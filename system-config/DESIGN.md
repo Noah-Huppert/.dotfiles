@@ -49,4 +49,5 @@ An action can accept arguments. Some actions will do different things based on
 the linux distribution.
 
 # Configuration
-TODO
+Configuration is can have default values and linux distribution 
+specific values.
