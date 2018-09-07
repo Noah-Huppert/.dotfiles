@@ -4,7 +4,7 @@ import logging
 import sys
 import distro
 
-DISTRO_ARCH = 'Arch Linux'
+from system import DISTRO_ARCH
 
 def main() -> int:
     # Setup logger
@@ -19,7 +19,7 @@ def main() -> int:
 
     # Determine operating system
     if sys.platform != 'linux':
-        logger.error("tool can only run on linux")
+        logger.error("tool can only run on linux, incompatible platform: \"{}\"".format(sys.platform))
         return 1
 
     # Determine linux distribution
@@ -28,8 +28,9 @@ def main() -> int:
 
     if 'Arch Linux' in distro_info:
         distro_name = DISTRO_ARCH
-
-    logger.debug(distro_name)
+    else:
+        logger.error("tool can only run on Arch linux, incompatible distribution: {}".format(distro_info))
+        return 1
 
     return 0
 
