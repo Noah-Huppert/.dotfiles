@@ -59,6 +59,35 @@ function xtend-off() {
 	polystart
 }
 
+# Switch between Kubernetes clusters
+# Arguments:
+#	1. CLUSTER    Kubernetes cluster to connect to. Valid values:
+#                         
+#                         - noahhuppert
+#                         - noah.programmer
+function switch-k8s() {
+	# Arguments
+	cluster="$1"
+	if [ -z "$cluster" ]; then
+		echo "Error: cluster argument must be provided" >&2
+		return 1
+	fi
+
+	# Connect to specified cluster
+	if [[ "$cluster" == "noahhuppert" ]]; then
+		gcloud container clusters get-credentials personal-1 \
+			--zone us-central1-a \
+			--project nh-k8s
+	elif [[ "$cluster" == "noah.programmer" ]]; then
+		gcloud container clusters get-credentials noah-programmer-cluster-1 \
+			--zone us-central1-a \
+			--project np-k8s
+	else
+		echo "Error: unknown cluster name \"$cluster\"" >&2
+		return 1
+	fi
+}
+
 # APK Tool
 export PATH="$PATH:$HOME/Documents/bin/apktool"
 
@@ -81,3 +110,14 @@ export PATH="$PATH:$HOME/Documents/workspace/work/AdmitHub/infrastructure-core/a
 # Android
 export ANDROID_NDK_HOME="/opt/android-ndk"
 export ANDROID_SDK_ROOT="/opt/android-sdk/"
+
+# github.com/Noah-Huppert/kube-namespace
+. $HOME/Documents/workspace/www/kube-namespace/kubens
+alias kubectl="kubens run"
+
+# Python libraries
+#export LD_LIBRARY_PATH="/usr/lib $(which python)"
+
+# Go migrate tool
+# https://github.com/golang-migrate/migrate
+export PATH="$PATH:/opt/migrate"
