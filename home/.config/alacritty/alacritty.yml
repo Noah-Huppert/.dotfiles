@@ -15,6 +15,8 @@ env:
   TERM: xterm-256color
 
 window:
+  decorations: true
+
   # Window dimensions in character columns and lines
   # (changes require restart)
   dimensions:
