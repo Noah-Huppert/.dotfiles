@@ -44,7 +44,8 @@ Plug 'Shougo/deoplete.nvim'
 Plug 'zchee/deoplete-jedi'
 let g:deoplete#enable_at_startup = 1
 
-" Install gcode with: go get -u github.com/nsf/gocode
+" Install gcode with: go get -u github.com/mdempsky/gocode
+Plug 'mdempsky/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
 Plug 'zchee/deoplete-go', { 'do': 'make'}
 let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
 
@@ -54,11 +55,19 @@ Plug 'zchee/deoplete-clang'
 let g:deoplete#sources#clang#libclang_path = '/usr/lib/libclang.so'
 let g:deoplete#sources#clang#clang_header = '/usr/lib/clang/'
 
+" Python
+Plug 'numirias/semshi'
+let g:semshi#error_sign = v:false
+let g:semshi#mark_selected_nodes = 0
+
 " Doxygen
 Plug 'vim-scripts/DoxygenToolkit.vim'
 
 " Javascript
 Plug 'jelera/vim-javascript-syntax'
+
+" Documentation generator
+Plug 'heavenshell/vim-jsdoc'
 
 call plug#end()
 
