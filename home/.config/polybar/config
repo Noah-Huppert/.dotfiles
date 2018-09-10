@@ -51,35 +51,45 @@ font-2 = siji:pixelsize=10;1
 font-3 = RobotoMono Nerd Font:size=12;3
 
 # Which modules to show
-modules-left = bspwm
+modules-left = i3
 modules-center = 
 modules-right = filesystem volume eth wlan xkeyboard backlight battery date
 
-# Map scrollwheel to bspwm workspace change
-scroll-up = bspwm-desknext
-scroll-down = bspwm-deskprev
+# Map scrollwheel to i3 workspace change
+scroll-up = i3wm-wsnext
+scroll-down = i3wm-wsprev
 
 # Vetted modules
-[module/bspwm]
-type = internal/bspwm
+[module/i3]
+type = internal/i3
 
 # Only show workspaces on same monitor as bar
 pin-workspaces = true
 
-# Empty workspace styling
-label-empty = %index%
-label-empty-foreground = ${colors.foreground}
-label-empty-padding = 2
+# Always show workspaces in numerical order rather than creation order
+index-sort = true
 
-# Focused workspace styling
+# Stop workspace switching with the scroll wheel from wrapping to the beginning
+# when the 1st or last workspace is reached
+wrapping-scroll = false
+
+# Use fuzzy matching for workspace names in styling
+fuzzy-match = true
+
+# Mode styling configuration, not sure what this is
+label-mode = %mode%
+label-mode-background = ${colors.secondary}
+label-mode-padding = 2
+
+# Styling for focused workspaces
 label-focused = %index%
 label-focused-background = ${colors.primary-dark}
 label-focused-padding = 2
 
-# Styling for workspaces which have windows in them
-label-occupied = %index%
-label-occupied-underline = ${colors.secondary}
-label-occupied-padding = 2
+# Styling for workspaces which exist but are not focused
+label-unfocused = %index%
+label-unfocused-underline = ${colors.secondary}
+label-unfocused-padding = 2
 
 # Styling for workspaces with notifications in them
 label-urgent = %index%
