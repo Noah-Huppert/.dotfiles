@@ -178,4 +178,4 @@ super + XF86MonBrightnessUp
 # Screenshot
 #
 super + alt + s
-	scrot
+	cd $HOME/Documents/pictures/screenshots && $scrot
