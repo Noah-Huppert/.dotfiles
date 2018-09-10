@@ -5,7 +5,7 @@
 export _JAVA_AWT_WM_NONREPARENTING=1
 
 # Set background
-bkground
+#bkground
 
 # WM
-exec bspwm 
+exec i3 
