@@ -4,7 +4,7 @@
 
 # -- -- Environment
 export TERMINAL=alacritty
-export TERM="alacritty"
+export TERM=xterm-256color
 export EDITOR=nvim
 export PAGER=less
 
@@ -220,10 +220,6 @@ function mcdir() { # (dir)
 	cd $1
 }
 
-function serve() {
-	python3 -m http.server
-}
-
 function venvdir() {# virtual_env
 	echo "$HOME/Documents/lib/python/$1"
 }
@@ -267,7 +263,7 @@ alias l=less
 # -- -- Homeshick
 source "$HOME/.homesick/repos/homeshick/homeshick.sh"
 fpath=($HOME/.homesick/repos/homeshick/completions $fpath)
-homeshick refresh --quiet
+# homeshick refresh --quiet
 
 # -- -- NVM
 if [[ $DOTRC_NVM == true ]]; then
@@ -331,3 +327,11 @@ setopt EXTENDED_HISTORY  # Save timestamp for history entries
 
 # Search command history
 bindkey "^R" history-incremental-search-backward
+
+# Kubernetes shortcut
+alias k="kubectl"
+
+# Dotenv
+if [ -f ".env" ]; then
+	. ./.env
+fi
