@@ -28,7 +28,7 @@ font pango:Roboto 10
 
 # i3 Gaps
 gaps inner 12
-gaps outer 12
+#gaps outer 12
 #for_window [class="^.*"] border pixel 0
 # browser pop-ups
 for_window [window_role="pop-up"] floating enable
@@ -45,9 +45,9 @@ floating_modifier $mod
 bindsym $mod+Return exec $TERMINAL
 
 # kill focused window
-bindsym $mod+Shift+q kill
+bindsym $mod+w kill
 
-# start dmenu (a program launcher)
+# start dmenuw(a program launcher)
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -86,18 +86,18 @@ bindsym $mod+Shift+v split v
 bindsym $mod+v split h
 
 # enter fullscreen mode for the focused container
-bindsym $mod+f fullscreen toggle
+bindsym $mod+m fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
+bindsym $mod+t layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+t focus mode_toggle
+bindsym $mod+f focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
@@ -204,3 +204,6 @@ bindsym $mod+Shift+minus move scratchpad
 
 # Show the first scratchpad window
 bindsym $mod+minus scratchpad show
+
+# Disable titlebar
+new_window 1pixel
