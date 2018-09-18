@@ -69,6 +69,9 @@ Plug 'jelera/vim-javascript-syntax'
 " Documentation generator
 Plug 'heavenshell/vim-jsdoc'
 
+" Indent guides
+Plug 'nathanaelkane/vim-indent-guides'
+
 call plug#end()
 
 " Theme
