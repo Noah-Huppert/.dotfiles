@@ -8,4 +8,4 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 #bkground
 
 # WM
-exec i3 
+exec i3 --shmlog-size=26214400
