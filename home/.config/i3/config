@@ -59,6 +59,7 @@ bindsym $mod+XF86MonBrightnessUp exec sudo bklight increment up 33
 
 # kill focused window
 bindsym $mod+w kill
+bindsym $mod+Shift+q exec xdo kill
 
 # start dmenuw(a program launcher)
 # There also is the (new) i3-dmenu-desktop which only displays applications
@@ -187,7 +188,7 @@ bindsym $mod+r mode "resize"
 #}
 exec --no-startup-id $HOME/.config/polybar/launch.sh
 exec --no-startup-id bkground
-exec --no-startup-id compton --config ~/.config/compton/compton.conf
+#exec --no-startup-id compton --config ~/.config/compton/compton.conf
 
 # Colors
 #   #000000
