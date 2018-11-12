@@ -98,3 +98,6 @@ export PATH="$PATH:$HOME/Documents/bin/private-scripts"
 
 # Default screen shot directory for snip script
 export SNIP_DEFAULT_OUT="$HOME/Documents/pictures/screenshots"
+
+# Istio
+export PATH="$PATH:/opt/istio/bin"
