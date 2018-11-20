@@ -3,5 +3,6 @@ TAG="noahhuppert/neovim:latest"
 docker run \
 	-it \
 	--rm \
-	-v "$PWD:/home/shared/workdir" \
+	-e GOTO_DIR="$PWD" \
+	-v "/:/h" \
 	"$TAG" "$@"

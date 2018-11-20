@@ -7,6 +7,9 @@ RUN sed -i -e 's/v[[:digit:]]\.[[:digit:]]/edge/g' /etc/apk/repositories
 RUN apk add --update musl-dev curl git go python3 python3-dev neovim 
 RUN pip3 install --upgrade pip
 
+RUN mkdir /h
+RUN chmod 777 /h
+
 # Create user
 RUN adduser -D shared
 USER shared
@@ -40,7 +43,8 @@ RUN pip3 install --user nose
 RUN nvim +PlugInstall +qa
 
 # Entrypoint
-RUN mkdir /home/shared/workdir
-WORKDIR /home/shared/workdir
+WORKDIR /h
 
-ENTRYPOINT [ "/usr/bin/nvim" ]
+COPY start-nvim.sh /home/shared
+
+ENTRYPOINT [ "/home/shared/start-nvim.sh" ]
