@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+#?
+# nvim - Runs Neovim in a Docker container
+#
+# USAGE
+#
+#	nvim ARGS...
+#?
+TAG="noahhuppert/neovim:latest"
+docker run \
+	-it \
+	--rm \
+	-e GOTO_DIR="$PWD" \
+	-v "/:/h" \
+	"$TAG" "$@"

@@ -1,8 +1,1 @@
-#!/usr/bin/env bash
-TAG="noahhuppert/neovim:latest"
-docker run \
-	-it \
-	--rm \
-	-e GOTO_DIR="$PWD" \
-	-v "/:/h" \
-	"$TAG" "$@"
+nvim
