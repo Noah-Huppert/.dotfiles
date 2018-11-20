@@ -3,4 +3,5 @@ TAG="noahhuppert/neovim:latest"
 docker run \
 	-it \
 	--rm \
+	-v "$PWD:/shared" \
 	"$TAG"
