@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+TAG="noahhuppert/neovim:latest"
+docker run \
+	-it \
+	--rm \
+	"$TAG"
