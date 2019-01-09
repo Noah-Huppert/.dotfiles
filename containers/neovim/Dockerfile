@@ -46,6 +46,4 @@ RUN nvim +PlugInstall +qa
 # Entrypoint
 WORKDIR /h
 
-COPY start-nvim.sh /home/shared
-
-ENTRYPOINT [ "/home/shared/start-nvim.sh" ]
+ENTRYPOINT [ "/usr/bin/nvim" ]
