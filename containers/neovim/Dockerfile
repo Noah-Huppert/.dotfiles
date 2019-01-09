@@ -12,23 +12,24 @@ RUN mkdir /h
 RUN chmod 777 /h
 
 # Create user
-RUN adduser -D shared
-USER shared
+ARG USER
+RUN adduser -D $USER
+USER "$USER"
 
-ENV PATH $PATH:/home/shared/.local/bin
+ENV PATH $PATH:/home/$USER/.local/bin
 
 # Setup runtimes
 # ... Go
-ENV GOPATH /home/shared/go
+ENV GOPATH /home/$USER/go
 RUN mkdir "$GOPATH"
 
 # Configuration
-RUN mkdir -p /home/shared/.config/nvim
-COPY init.vim /home/shared/.config/nvim
+RUN mkdir -p /home/$USER/.config/nvim
+COPY init.vim /home/$USER/.config/nvim
 
 # Setup plugins
 # ... Plug
-RUN curl -fLo /home/shared/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+RUN curl -fLo /home/$USER/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 # ... Go code
 RUN go get -u github.com/nsf/gocode
