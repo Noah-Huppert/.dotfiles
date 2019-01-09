@@ -4,9 +4,10 @@ FROM alpine:latest
 RUN sed -i -e 's/v[[:digit:]]\.[[:digit:]]/edge/g' /etc/apk/repositories
 
 # Install Neovim and plugin dependencies
-RUN apk add --update musl-dev curl git go python3 python3-dev neovim 
+RUN apk add --update musl-dev bash curl git go python3 python3-dev neovim 
 RUN pip3 install --upgrade pip
 
+# Creating host mount directory
 RUN mkdir /h
 RUN chmod 777 /h
 
