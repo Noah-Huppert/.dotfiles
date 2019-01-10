@@ -157,3 +157,5 @@ set completeopt+=noselect
 
 " Translate file paths b/c we are running in a Docker container
 autocmd BufRead * execute 'edit' fnameescape('/h' . expand('%:p'))
+doautocmd Syntax
+doautocmd FileType
