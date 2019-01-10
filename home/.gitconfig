@@ -15,3 +15,5 @@
 	pul = pull origin master
 [push]
 	default = current
+[credential "https://source.developers.google.com"]
+	helper = gcloud.sh
