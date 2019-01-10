@@ -104,3 +104,6 @@ export PATH="$PATH:/opt/istio/bin"
 
 # Linkerd
 export PATH="$PATH:$HOME/.linkerd2/bin"
+
+# Container bin
+#export PATH="$PATH:$HOME/Documents/bin/.dotfiles/containers/bin"
