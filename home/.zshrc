@@ -4,7 +4,15 @@
 
 # -- -- Environment
 export TERMINAL=alacritty
-export TERM=xterm-256color
+
+# Set TERM based on if X is running
+if [ -z "$DISPLAY" ]; then
+	# Not running X
+	export TERM=linux
+else
+	# Running X
+	export TERM=xterm-256color
+fi
 export EDITOR=nvim
 export PAGER=less
 
