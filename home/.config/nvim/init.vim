@@ -32,6 +32,7 @@ Plug 'Townk/vim-autoclose'
 Plug 'sheerun/vim-polyglot'
 Plug 'rust-lang/rust.vim'
 Plug 'tikhomirov/vim-glsl'
+Plug 'saltstack/salt-vim'
 
 " -- -- Go
 Plug 'fatih/vim-go'
