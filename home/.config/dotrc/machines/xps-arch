@@ -107,3 +107,6 @@ export PATH="$PATH:$HOME/.linkerd2/bin"
 
 # Container bin
 #export PATH="$PATH:$HOME/Documents/bin/.dotfiles/containers/bin"
+
+# Kiln
+export PATH="$PATH:$HOME/Documents/workspace/www/kiln"
