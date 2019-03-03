@@ -110,3 +110,6 @@ export PATH="$PATH:$HOME/.linkerd2/bin"
 
 # Kiln
 export PATH="$PATH:$HOME/Documents/workspace/www/kiln"
+
+# salt-pillar-linter
+export PATH="$PATH:$HOME/Documents/workspace/devops/salt-pillar-linter"
