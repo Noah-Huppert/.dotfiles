@@ -221,3 +221,6 @@ bindsym $mod+minus scratchpad show
 
 # Disable titlebar
 new_window 1pixel
+
+# Notifications
+exec --no-startup-id dunst
