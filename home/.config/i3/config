@@ -188,7 +188,8 @@ bindsym $mod+r mode "resize"
 #}
 exec --no-startup-id $HOME/.config/polybar/launch.sh
 exec --no-startup-id bkground
-#exec --no-startup-id compton --config ~/.config/compton/compton.conf
+exec --no-startup-id compton --config ~/.config/compton/compton.conf
+exec --no-startup-id dunst --config ~/.config/dunst/dunst.conf
 
 # Colors
 #   #000000
@@ -221,6 +222,3 @@ bindsym $mod+minus scratchpad show
 
 # Disable titlebar
 new_window 1pixel
-
-# Notifications
-exec --no-startup-id dunst
