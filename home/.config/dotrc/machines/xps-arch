@@ -113,3 +113,6 @@ export PATH="$PATH:$HOME/Documents/workspace/www/kiln"
 
 # salt-pillar-linter
 export PATH="$PATH:$HOME/Documents/workspace/devops/salt-pillar-linter"
+
+# Enable go modules
+export GO111MODULE=on
